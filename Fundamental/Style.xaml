@@ -1,70 +1,6 @@
-<!-- 
-    ================================================================================
-    ФАЙЛ СТИЛЕЙ ДЛЯ WPF ПРИЛОЖЕНИЯ (Style.xaml)
-    Конвертация из Style.css для игры Fundamental-2
-    ================================================================================
-    
-    КАК ПОДКЛЮЧИТЬ ЭТОТ ФАЙЛ СТИЛЕЙ К index.xaml:
-    
-    В HTML (index.html) стили подключались через тег link в разделе head:
-        link rel="stylesheet" href="Style.css"
-    
-    В WPF (index.xaml) стили подключаются через ResourceDictionary в App.xaml 
-    или непосредственно в окне/пользовательском элементе управления:
-    
-    СПОСОБ 1: Глобальное подключение в App.xaml (рекомендуется)
-    Откройте App.xaml и добавьте в раздел Application.Resources:
-    
-    Application x:Class="Fundamental_2.App"
-                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                 StartupUri="MainWindow.xaml"
-        Application.Resources
-            ResourceDictionary
-                ResourceDictionary.MergedDictionaries
-                    Подключение файла стилей
-                    ResourceDictionary Source="Style.xaml"/
-                /ResourceDictionary.MergedDictionaries
-            /ResourceDictionary
-        /Application.Resources
-    /Application
-    
-    СПОСОБ 2: Локальное подключение в конкретном XAML файле
-    Добавьте в корневой элемент вашего окна или UserControl:
-    
-    Window x:Class="Fundamental_2.MainWindow"
-            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-            ...
-        Window.Resources
-            ResourceDictionary
-                ResourceDictionary.MergedDictionaries
-                    ResourceDictionary Source="Style.xaml"/
-                /ResourceDictionary.MergedDictionaries
-            /ResourceDictionary
-        /Window.Resources
-        Остальной контент
-    /Window
-    
-    ВАЖНЫЕ ОТЛИЧИЯ ОТ HTML/CSS:
-    1. CSS переменные преобразованы в ресурсы XAML 
-    2. Классы CSS преобразованы в стили XAML с ключами
-       Для применения используйте: Style="{StaticResource ClassName}"
-    3. Псевдоклассы реализованы через Triggers
-    4. Шрифты должны быть добавлены как ресурсы проекта со свойством 
-       "Build Action" = "Resource"
-    
-    ================================================================================
--->
-
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Fundamental_2">
-
-    <!-- ============================================================================
-         ЦВЕТОВЫЕ РЕСУРСЫ (CSS Variables)
-         В HTML определялись в :root через --variable-name
-         ========================================================================== -->
     
     <!-- Основные цвета фона и окон -->
     <Color x:Key="BackgroundColor">#030012</Color>
@@ -176,30 +112,10 @@
     <SolidColorBrush x:Key="StageSubtextBrush" Color="{StaticResource StageSubtextColor}"/>
     <SolidColorBrush x:Key="StageButtonBorderBrush" Color="{StaticResource StageButtonBorderColor}"/>
     <SolidColorBrush x:Key="StageImageBorderBrush" Color="{StaticResource StageImageBorderColor}"/>
-
-    <!-- ============================================================================
-         ШРИФТЫ (Font-Faces)
-         В HTML определялись через @font-face
-         В WPF шрифты должны быть добавлены как ресурсы проекта
-         ========================================================================== -->
-    
-    <!-- 
-    ИНСТРУКЦИЯ ПО ДОБАВЛЕНИЮ ШРИФТОВ:
-    1. Скопируйте файлы шрифтов в папку проекта (например, "Fonts/Inter/")
-    2. Установите свойство "Build Action" = "Resource" для каждого файла
-    3. Используйте синтаксис: FontFamily="pack://application:,,,/Fonts/Inter/#Inter"
-    -->
     
     <FontFamily x:Key="InterFont">pack://application:,,,/Fonts/Inter/#Inter</FontFamily>
     <FontFamily x:Key="TightFont">pack://application:,,,/Fonts/Inter/#Inter Tight</FontFamily>
     <FontFamily x:Key="DefaultFont">pack://application:,,,/Fonts/Inter/#Inter Tight, pack://application:,,,/Fonts/Inter/#Inter, Serif</FontFamily>
-
-    <!-- ============================================================================
-         БАЗОВЫЕ СТИЛИ (Body и общие элементы)
-         В HTML: body *, body { box-sizing, margin, padding, font, transition }
-         ========================================================================== -->
-    
-    <!-- Базовый стиль для всех элементов (аналог body *) -->
     <Style x:Key="BaseStyle" TargetType="Control">
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="0"/>
@@ -219,14 +135,6 @@
     <Style TargetType="Label" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Foreground" Value="{StaticResource MainTextBrush}"/>
     </Style>
-
-    <!-- ============================================================================
-         СТИЛИ ДЛЯ ТЕКСТА (CSS классы .stageText, .mainText, etc.)
-         В HTML: .className { color: var(--color) !important; }
-         В WPF: Применяются через Style="{StaticResource ClassName}"
-         ========================================================================== -->
-    
-    <!-- Цвета текста -->
     <Style x:Key="StageText" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource StageTextBrush}"/>
     </Style>
@@ -316,13 +224,6 @@
     <Style x:Key="Center" TargetType="TextBlock">
         <Setter Property="TextAlignment" Value="Center"/>
     </Style>
-
-    <!-- ============================================================================
-         СТИЛИ ДЛЯ ГРАНИЦ ИЗОБРАЖЕНИЙ
-         В WPF Image не имеет свойств BorderThickness и BorderBrush,
-         поэтому эти стили предназначены для Border, который оборачивает Image
-         Используйте: <Border Style="{StaticResource GreenBorderImage}"><Image .../></Border>
-         ========================================================================== -->
     
     <Style x:Key="GreenBorderImage" TargetType="Border">
         <Setter Property="BorderThickness" Value="2"/>
@@ -538,8 +439,6 @@
          В WPF требуется кастомизация через ControlTemplate
          ========================================================================== -->
     
-    <!-- Примечание: Полная кастомизация Scrollbar в WPF требует сложного ControlTemplate.
-         Здесь приведены базовые цвета. Для полной реализации см. документацию Microsoft. -->
     <Style x:Key="CustomScrollBar" TargetType="ScrollBar">
         <Setter Property="Background" Value="{StaticResource FooterBrush}"/>
     </Style>
@@ -571,14 +470,13 @@
         <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="CornerRadius" Value="7"/>
-        <Setter Property="Padding" Value="8,8,9.6"/> <!-- 0.5em, 0.6em, 0.6em -->
+        <Setter Property="Padding" Value="8,8,8,9.6"/> <!-- 0.5em, 0.6em, 0.6em -->
         <Setter Property="MinWidth" Value="Auto"/>
         <Setter Property="MaxWidth" Value="880"/> <!-- min(55em, 95vw) -->
     </Style>
     
     <Style x:Key="HoverWindow" TargetType="Border" BasedOn="{StaticResource PopUpMenu}">
-        <Setter Property="FontSize" Value="14.72"/> <!-- 0.92em -->
-        <Setter Property="Padding" Value="3.2,8,4.8"/> <!-- 0.2em, 0.5em, 0.3em -->
+        <Setter Property="Padding" Value="8,3.2,8,4.8"/> <!-- 0.2em, 0.5em, 0.3em -->
         <Setter Property="IsHitTestVisible" Value="False"/>
     </Style>
 
@@ -596,7 +494,7 @@
         <Setter Property="Background" Value="{StaticResource WindowBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"/>
         <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Padding" Value="8,8,12.8"/> <!-- 0.5em, 0.8em, 0.8em -->
+        <Setter Property="Padding" Value="8,8,8,12.8"/> <!-- 0.5em, 0.8em, 0.8em -->
     </Style>
 
     <!-- ============================================================================
@@ -607,60 +505,21 @@
     <!-- Пример стиля для Alert (аналог #alertMain > article) -->
     <Style x:Key="AlertArticle" TargetType="Border">
         <Setter Property="Width" Value="384"/> <!-- 24rem -->
-        <Setter Property="MaxWidth" Value="80%"/>
         <Setter Property="Height" Value="320"/> <!-- 20rem -->
-        <Setter Property="MaxHeight" Value="90%"/>
         <Setter Property="Background" Value="{StaticResource WindowBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="CornerRadius" Value="10"/>
-        <Setter Property="Padding" Value="11.2,12.8,14.4"/> <!-- 0.7em, 0.8em, 0.9em -->
+        <Setter Property="Padding" Value="12.8,11.2,12.8,14.4"/> <!-- 0.7em, 0.8em, 0.9em -->
     </Style>
     
     <!-- Пример стиля для Offline (аналог #offlineMain > div) -->
     <Style x:Key="OfflineDiv" TargetType="Border">
         <Setter Property="Width" Value="672"/> <!-- 42rem -->
-        <Setter Property="MaxWidth" Value="94%"/>
         <Setter Property="Background" Value="{StaticResource WindowBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="CornerRadius" Value="10"/>
-        <Setter Property="Padding" Value="8,8,9.6"/> <!-- 0.5em, 0.6em, 0.6em -->
+        <Setter Property="Padding" Value="8,8,8,9.6"/> <!-- 0.5em, 0.6em, 0.6em -->
     </Style>
-
-    <!-- ============================================================================
-         ПРИМЕЧАНИЯ ПО ИСПОЛЬЗОВАНИЮ
-         ========================================================================== -->
-    
-    <!--
-    КАК ПРИМЕНЯТЬ СТИЛИ В XAML:
-    
-    1. Для TextBlock с цветовым стилем:
-       <TextBlock Text="Привет" Style="{StaticResource CyanText}"/>
-    
-    2. Для Button с базовым стилем:
-       <Button Content="Нажми" Style="{StaticResource BaseButton}"/>
-    
-    3. Для Button с toggle стилем:
-       <Button Content="Toggle" Style="{StaticResource ToggleNormal}"/>
-    
-    4. Для Image с границей стадии:
-       <Image Source="image.png" Style="{StaticResource Stage1borderImage}"/>
-    
-    5. Для TextBox (input):
-       <TextBox Text="123" Style="{StaticResource NumberInput}"/>
-    
-    6. Наследование стилей:
-       Если нужно комбинировать стили, используйте BasedOn:
-       <Style x:Key="MyCustomButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
-           <Setter Property="Width" Value="100"/>
-       </Style>
-    
-    ВАЖНО: 
-    - Все размеры указаны в пикселях (конвертированы из em/rem/vw/vh)
-    - Для адаптивности рассмотрите использование Viewbox или относительных размеров
-    - Анимации и переходы (transitions) в WPF реализуются через Storyboard
-    - Псевдоклассы (:hover, :disabled) реализованы через Triggers в ControlTemplate
-    -->
-
 </ResourceDictionary>

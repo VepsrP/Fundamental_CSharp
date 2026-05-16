@@ -219,7 +219,10 @@
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <StackPanel Margin="10">
                                         <!-- Resets Section -->
-                                        <GroupBox Header="Resets" Style="{StaticResource whiteText}">
+                                        <GroupBox>
+                                            <GroupBox.Header>
+                                                <TextBlock Style="{StaticResource whiteText}">Resets</TextBlock>
+                                            </GroupBox.Header>
                                             <StackPanel Margin="10">
                                                 <!-- End Reset -->
                                                 <Border x:Name="Reset2Main" 
@@ -381,16 +384,20 @@
                                                             Width="80" 
                                                             Margin="10,0,0,0"
                                                             Text="1"/>
-                                                    <Label Content="How many Structures" 
-                                                          Style="{StaticResource whiteText}"
-                                                          VerticalContentAlignment="Center"/>
+                                                    <Label VerticalContentAlignment="Center">
+                                                        <TextBlock Style="{StaticResource whiteText}">
+                                                            How many Structures
+                                                        </TextBlock>
+                                                    </Label>
                                                     <TextBox x:Name="AutoWaitInput" 
                                                             Width="80" 
                                                             Margin="10,0,0,0"
                                                             Text="1"/>
-                                                    <Label Content="Auto wait multiplier" 
-                                                          Style="{StaticResource whiteText}"
-                                                          VerticalContentAlignment="Center"/>
+                                                    <Label VerticalContentAlignment="Center">
+                                                        <TextBlock Style="{StaticResource whiteText}">
+                                                            Auto wait multiplier
+                                                        </TextBlock>
+                                                    </Label>
                                                     <ToggleButton Content="All ON" 
                                                                  Style="{StaticResource specialToggle}"
                                                                  Margin="10,0,0,0"/>
