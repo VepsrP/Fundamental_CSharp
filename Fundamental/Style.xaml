@@ -1,0 +1,682 @@
+<!-- 
+    ================================================================================
+    ФАЙЛ СТИЛЕЙ ДЛЯ WPF ПРИЛОЖЕНИЯ (Style.xaml)
+    Конвертация из Style.css для игры Fundamental-2
+    ================================================================================
+    
+    КАК ПОДКЛЮЧИТЬ ЭТОТ ФАЙЛ СТИЛЕЙ К index.xaml:
+    <!--------------------------------------------------------------------------------
+    
+    В HTML (index.html) стили подключались через тег <link> в разделе <head>:
+        <link rel="stylesheet" href="Style.css">
+    
+    В WPF (index.xaml) стили подключаются через ResourceDictionary в App.xaml 
+    или непосредственно в окне/пользовательском элементе управления:
+    
+    СПОСОБ 1: Глобальное подключение в App.xaml (рекомендуется)
+    <!-----------------------------------------------------------------------------
+    Откройте App.xaml и добавьте в раздел Application.Resources:
+    
+    <Application x:Class="Fundamental_2.App"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 StartupUri="MainWindow.xaml">
+        <Application.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <!-- Подключение файла стилей -->
+                    <ResourceDictionary Source="Style.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Application.Resources>
+    </Application>
+    
+    СПОСОБ 2: Локальное подключение в конкретном XAML файле
+    -----------------------------------------------------------------------------
+    Добавьте в корневой элемент вашего окна или UserControl:
+    
+    <Window x:Class="Fundamental_2.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            ...>
+        <Window.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="Style.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Window.Resources>
+        <!-- Остальной контент -->
+    </Window>
+    
+    СПОСОБ 3: Прямое включение через ResourceDictionary.Source
+    -----------------------------------------------------------------------------
+    Если файл находится в той же папке, что и index.xaml:
+    
+    <UserControl.Resources>
+        <ResourceDictionary Source="Style.xaml"/>
+    </UserControl.Resources>
+    
+    ВАЖНЫЕ ОТЛИЧИЯ ОТ HTML/CSS:
+    --------------------------------------------------------------------------------
+    1. CSS переменные (--variable-name) преобразованы в ресурсы XAML 
+       с использованием ключей {x:Static local:Colors.VariableName}
+    
+    2. Классы CSS (.className) преобразованы в стили XAML с ключами
+       Для применения используйте: Style="{StaticResource ClassName}"
+    
+    3. ID селекторы (#idName) преобразованы в стили с ключами
+       Для применения используйте: Style="{StaticResource IdName}"
+    
+    4. Псевдоклассы (:hover, :disabled) реализованы через Triggers
+    
+    5. Шрифты должны быть добавлены как ресурсы проекта со свойством 
+       "Build Action" = "Resource"
+    
+    ================================================================================
+-->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Fundamental_2">
+
+    <!-- ============================================================================
+         ЦВЕТОВЫЕ РЕСУРСЫ (CSS Variables)
+         В HTML определялись в :root через --variable-name
+         ========================================================================== -->
+    
+    <!-- Основные цвета фона и окон -->
+    <Color x:Key="BackgroundColor">#030012</Color>
+    <Color x:Key="WindowColor">#12121c</Color>
+    <Color x:Key="WindowBorderColor">CornflowerBlue</Color>
+    <Color x:Key="FooterColor">DarkBlue</Color>
+    
+    <!-- Цвета кнопок -->
+    <Color x:Key="ButtonColor">MediumBlue</Color>
+    <Color x:Key="ButtonBorderColor">DarkCyan</Color>
+    <Color x:Key="ButtonHoverColor">#2626ff</Color>
+    <Color x:Key="BuildingAffordColor">#a90000</Color>
+    
+    <!-- Цвета вкладок -->
+    <Color x:Key="TabActiveColor">#8b00c5</Color>
+    <Color x:Key="TabElementsColor">#9f6700</Color>
+    <Color x:Key="TabStrangenessColor">#00b100</Color>
+    <Color x:Key="TabInflationColor">#6c1ad1</Color>
+    
+    <!-- Цвета наведения и ховера -->
+    <Color x:Key="HollowHoverColor">#170089</Color>
+    <Color x:Key="FooterButtonHoverColor">#181818</Color>
+    
+    <!-- Цвета input элементов -->
+    <Color x:Key="InputBorderColor">#831aa5</Color>
+    <Color x:Key="InputTextColor">#cf71ff</Color>
+    <Color x:Key="ButtonTextColor">#e3e3e3</Color>
+    
+    <!-- Текстовые цвета -->
+    <Color x:Key="MainTextColor">#00d6d6</Color>      <!-- Cyan -->
+    <Color x:Key="WhiteTextColor">White</Color>
+    <Color x:Key="CyanTextColor">#00d6d6</Color>
+    <Color x:Key="BlueTextColor">DodgerBlue</Color>
+    <Color x:Key="OrangeTextColor">DarkOrange</Color>
+    <Color x:Key="GrayTextColor">#8f8f8f</Color>
+    <Color x:Key="OrchidTextColor">#e14bdb</Color>
+    <Color x:Key="DarkorchidTextColor">#bd24ef</Color>
+    <Color x:Key="DarkvioletTextColor">#8b3cec</Color>
+    <Color x:Key="BrownTextColor">#9b7346</Color>
+    <Color x:Key="RedTextColor">#eb0000</Color>
+    <Color x:Key="GreenTextColor">#00e900</Color>
+    <Color x:Key="YellowTextColor">#fafa00</Color>
+    
+    <!-- Специальные цвета для стадий -->
+    <Color x:Key="StageTextColor">#00d6d6</Color>
+    <Color x:Key="StageSubtextColor">#00d6d6</Color>
+    <Color x:Key="StageButtonBorderColor">DarkCyan</Color>
+    <Color x:Key="StageImageBorderColor">#008b8b</Color>
+    
+    <!-- Цвета границ для изображений по стадиям -->
+    <Color x:Key="GreenBorderColor">#006400</Color>
+    <Color x:Key="RedBorderImageColor">#b21111</Color>
+    <Color x:Key="BrownBorderImageColor">#752f27</Color>
+    <Color x:Key="Stage1BorderColor">#008b8b</Color>
+    <Color x:Key="Stage2BorderColor">#1460a8</Color>
+    <Color x:Key="Stage3BorderColor">#5b5b75</Color>
+    <Color x:Key="Stage4BorderColor">#e87400</Color>
+    <Color x:Key="Stage5BorderColor">#b324e2</Color>
+    <Color x:Key="Stage6BorderColor">#5300c1</Color>
+    
+    <!-- Цвета границ для кнопок по стадиям -->
+    <Color x:Key="Stage1ButtonBorderColor">DarkCyan</Color>
+    <Color x:Key="Stage2ButtonBorderColor">#386cc7</Color>
+    <Color x:Key="Stage3ButtonBorderColor">#424242</Color>
+    <Color x:Key="Stage4ButtonBorderColor">#a35700</Color>
+    <Color x:Key="Stage5ButtonBorderColor">#8f004c</Color>
+    <Color x:Key="Stage6ButtonBorderColor">#6c1ad1</Color>
+    
+    <!-- Цвета фона окон по стадиям -->
+    <Color x:Key="Stage1WindowBackgroundColor">#12121c</Color>
+    <Color x:Key="Stage2WindowBackgroundColor">#000052</Color>
+    <Color x:Key="Stage3WindowBackgroundColor">#2e1200</Color>
+    <Color x:Key="Stage4WindowBackgroundColor">#4e0000</Color>
+    <Color x:Key="Stage5WindowBackgroundColor">#001d42</Color>
+    <Color x:Key="Stage6WindowBackgroundColor">#01003c</Color>
+    
+    <!-- Преобразование цветов в SolidColorBrush для удобного использования -->
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
+    <SolidColorBrush x:Key="WindowBrush" Color="{StaticResource WindowColor}"/>
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource WindowBorderColor}"/>
+    <SolidColorBrush x:Key="FooterBrush" Color="{StaticResource FooterColor}"/>
+    <SolidColorBrush x:Key="ButtonBrush" Color="{StaticResource ButtonColor}"/>
+    <SolidColorBrush x:Key="ButtonBorderBrush" Color="{StaticResource ButtonBorderColor}"/>
+    <SolidColorBrush x:Key="ButtonHoverBrush" Color="{StaticResource ButtonHoverColor}"/>
+    <SolidColorBrush x:Key="BuildingAffordBrush" Color="{StaticResource BuildingAffordColor}"/>
+    <SolidColorBrush x:Key="TabActiveBrush" Color="{StaticResource TabActiveColor}"/>
+    <SolidColorBrush x:Key="TabElementsBrush" Color="{StaticResource TabElementsColor}"/>
+    <SolidColorBrush x:Key="TabStrangenessBrush" Color="{StaticResource TabStrangenessColor}"/>
+    <SolidColorBrush x:Key="TabInflationBrush" Color="{StaticResource TabInflationColor}"/>
+    <SolidColorBrush x:Key="HollowHoverBrush" Color="{StaticResource HollowHoverColor}"/>
+    <SolidColorBrush x:Key="FooterButtonHoverBrush" Color="{StaticResource FooterButtonHoverColor}"/>
+    <SolidColorBrush x:Key="InputBorderBrush" Color="{StaticResource InputBorderColor}"/>
+    <SolidColorBrush x:Key="InputTextBrush" Color="{StaticResource InputTextColor}"/>
+    <SolidColorBrush x:Key="ButtonTextBrush" Color="{StaticResource ButtonTextColor}"/>
+    <SolidColorBrush x:Key="MainTextBrush" Color="{StaticResource MainTextColor}"/>
+    <SolidColorBrush x:Key="WhiteTextBrush" Color="{StaticResource WhiteTextColor}"/>
+    <SolidColorBrush x:Key="CyanTextBrush" Color="{StaticResource CyanTextColor}"/>
+    <SolidColorBrush x:Key="BlueTextBrush" Color="{StaticResource BlueTextColor}"/>
+    <SolidColorBrush x:Key="OrangeTextBrush" Color="{StaticResource OrangeTextColor}"/>
+    <SolidColorBrush x:Key="GrayTextBrush" Color="{StaticResource GrayTextColor}"/>
+    <SolidColorBrush x:Key="OrchidTextBrush" Color="{StaticResource OrchidTextColor}"/>
+    <SolidColorBrush x:Key="DarkorchidTextBrush" Color="{StaticResource DarkorchidTextColor}"/>
+    <SolidColorBrush x:Key="DarkvioletTextBrush" Color="{StaticResource DarkvioletTextColor}"/>
+    <SolidColorBrush x:Key="BrownTextBrush" Color="{StaticResource BrownTextColor}"/>
+    <SolidColorBrush x:Key="RedTextBrush" Color="{StaticResource RedTextColor}"/>
+    <SolidColorBrush x:Key="GreenTextBrush" Color="{StaticResource GreenTextColor}"/>
+    <SolidColorBrush x:Key="YellowTextBrush" Color="{StaticResource YellowTextColor}"/>
+    <SolidColorBrush x:Key="StageTextBrush" Color="{StaticResource StageTextColor}"/>
+    <SolidColorBrush x:Key="StageSubtextBrush" Color="{StaticResource StageSubtextColor}"/>
+    <SolidColorBrush x:Key="StageButtonBorderBrush" Color="{StaticResource StageButtonBorderColor}"/>
+    <SolidColorBrush x:Key="StageImageBorderBrush" Color="{StaticResource StageImageBorderColor}"/>
+
+    <!-- ============================================================================
+         ШРИФТЫ (Font-Faces)
+         В HTML определялись через @font-face
+         В WPF шрифты должны быть добавлены как ресурсы проекта
+         ========================================================================== -->
+    
+    <!-- 
+    ИНСТРУКЦИЯ ПО ДОБАВЛЕНИЮ ШРИФТОВ:
+    1. Скопируйте файлы шрифтов в папку проекта (например, "Fonts/Inter/")
+    2. Установите свойство "Build Action" = "Resource" для каждого файла
+    3. Используйте синтаксис: FontFamily="pack://application:,,,/Fonts/Inter/#Inter"
+    -->
+    
+    <FontFamily x:Key="InterFont">pack://application:,,,/Fonts/Inter/#Inter</FontFamily>
+    <FontFamily x:Key="TightFont">pack://application:,,,/Fonts/Inter/#Inter Tight</FontFamily>
+    <FontFamily x:Key="DefaultFont">pack://application:,,,/Fonts/Inter/#Inter Tight, pack://application:,,,/Fonts/Inter/#Inter, Serif</FontFamily>
+
+    <!-- ============================================================================
+         БАЗОВЫЕ СТИЛИ (Body и общие элементы)
+         В HTML: body *, body { box-sizing, margin, padding, font, transition }
+         ========================================================================== -->
+    
+    <!-- Базовый стиль для всех элементов (аналог body *) -->
+    <Style x:Key="BaseStyle" TargetType="Control">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainTextBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    </Style>
+
+    <!-- Стиль по умолчанию для TextBlock -->
+    <Style TargetType="TextBlock" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Foreground" Value="{StaticResource MainTextBrush}"/>
+    </Style>
+
+    <!-- Стиль по умолчанию для Label -->
+    <Style TargetType="Label" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Foreground" Value="{StaticResource MainTextBrush}"/>
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ ТЕКСТА (CSS классы .stageText, .mainText, etc.)
+         В HTML: .className { color: var(--color) !important; }
+         В WPF: Применяются через Style="{StaticResource ClassName}"
+         ========================================================================== -->
+    
+    <!-- Цвета текста -->
+    <Style x:Key="StageText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource StageTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="StageTextSub" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource StageSubtextBrush}"/>
+    </Style>
+    
+    <Style x:Key="MainText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource MainTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="WhiteText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource WhiteTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="CyanText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource CyanTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="BlueText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BlueTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="OrangeText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource OrangeTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="GrayText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource GrayTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="OrchidText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource OrchidTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="DarkorchidText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource DarkorchidTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="DarkvioletText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource DarkvioletTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="BrownText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrownTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="RedText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource RedTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="GreenText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource GreenTextBrush}"/>
+    </Style>
+    
+    <Style x:Key="YellowText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource YellowTextBrush}"/>
+    </Style>
+
+    <!-- Также применяем стили к Label -->
+    <Style x:Key="StageTextLabel" TargetType="Label" BasedOn="{StaticResource StageText}"/>
+    <Style x:Key="MainTextLabel" TargetType="Label" BasedOn="{StaticResource MainText}"/>
+    <Style x:Key="WhiteTextLabel" TargetType="Label" BasedOn="{StaticResource WhiteText}"/>
+    <Style x:Key="CyanTextLabel" TargetType="Label" BasedOn="{StaticResource CyanText}"/>
+    <Style x:Key="BlueTextLabel" TargetType="Label" BasedOn="{StaticResource BlueText}"/>
+    <Style x:Key="OrangeTextLabel" TargetType="Label" BasedOn="{StaticResource OrangeText}"/>
+    <Style x:Key="GrayTextLabel" TargetType="Label" BasedOn="{StaticResource GrayText}"/>
+    <Style x:Key="OrchidTextLabel" TargetType="Label" BasedOn="{StaticResource OrchidText}"/>
+    <Style x:Key="DarkorchidTextLabel" TargetType="Label" BasedOn="{StaticResource DarkorchidText}"/>
+    <Style x:Key="DarkvioletTextLabel" TargetType="Label" BasedOn="{StaticResource DarkvioletText}"/>
+    <Style x:Key="BrownTextLabel" TargetType="Label" BasedOn="{StaticResource BrownText}"/>
+    <Style x:Key="RedTextLabel" TargetType="Label" BasedOn="{StaticResource RedText}"/>
+    <Style x:Key="GreenTextLabel" TargetType="Label" BasedOn="{StaticResource GreenText}"/>
+    <Style x:Key="YellowTextLabel" TargetType="Label" BasedOn="{StaticResource YellowText}"/>
+
+    <!-- Размеры текста -->
+    <Style x:Key="BigWord" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="17.6"/> <!-- 1.1em от 16px -->
+    </Style>
+    
+    <Style x:Key="BiggerWord" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="19.2"/> <!-- 1.2em от 16px -->
+    </Style>
+
+    <!-- Выравнивание -->
+    <Style x:Key="Center" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ ГРАНИЦ ИЗОБРАЖЕНИЙ (CSS классы .greenBorderImage, .stage1borderImage, etc.)
+         ========================================================================== -->
+    
+    <Style x:Key="GreenBorderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#006400"/>
+    </Style>
+    
+    <Style x:Key="RedBorderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#b21111"/>
+    </Style>
+    
+    <Style x:Key="BrownBorderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#752f27"/>
+    </Style>
+    
+    <Style x:Key="Stage1borderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#008b8b"/>
+    </Style>
+    
+    <Style x:Key="Stage2borderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#1460a8"/>
+    </Style>
+    
+    <Style x:Key="Stage3borderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#5b5b75"/>
+    </Style>
+    
+    <Style x:Key="Stage4borderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#e87400"/>
+    </Style>
+    
+    <Style x:Key="Stage5borderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#b324e2"/>
+    </Style>
+    
+    <Style x:Key="Stage6borderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#5300c1"/>
+    </Style>
+    
+    <Style x:Key="StageAllborderImage" TargetType="Image">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="{StaticResource StageImageBorderBrush}"/>
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ ГРАНИЦ КНОПОК (CSS классы .stage1borderButton, etc.)
+         ========================================================================== -->
+    
+    <Style x:Key="Stage1borderButton" TargetType="Button">
+        <Setter Property="BorderBrush" Value="DarkCyan"/>
+    </Style>
+    
+    <Style x:Key="Stage2borderButton" TargetType="Button">
+        <Setter Property="BorderBrush" Value="#386cc7"/>
+    </Style>
+    
+    <Style x:Key="Stage3borderButton" TargetType="Button">
+        <Setter Property="BorderBrush" Value="#424242"/>
+    </Style>
+    
+    <Style x:Key="Stage4borderButton" TargetType="Button">
+        <Setter Property="BorderBrush" Value="#a35700"/>
+    </Style>
+    
+    <Style x:Key="Stage5borderButton" TargetType="Button">
+        <Setter Property="BorderBrush" Value="#8f004c"/>
+    </Style>
+    
+    <Style x:Key="Stage6borderButton" TargetType="Button">
+        <Setter Property="BorderBrush" Value="#6c1ad1"/>
+    </Style>
+    
+    <Style x:Key="StageAllborderButton" TargetType="Button">
+        <Setter Property="BorderBrush" Value="{StaticResource StageButtonBorderBrush}"/>
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ ФОНА ОКОН (CSS классы .stage1windowBackground, etc.)
+         ========================================================================== -->
+    
+    <Style x:Key="Stage1windowBackground" TargetType="Border">
+        <Setter Property="Background" Value="#12121c"/>
+    </Style>
+    
+    <Style x:Key="Stage2windowBackground" TargetType="Border">
+        <Setter Property="Background" Value="#000052"/>
+    </Style>
+    
+    <Style x:Key="Stage3windowBackground" TargetType="Border">
+        <Setter Property="Background" Value="#2e1200"/>
+    </Style>
+    
+    <Style x:Key="Stage4windowBackground" TargetType="Border">
+        <Setter Property="Background" Value="#4e0000"/>
+    </Style>
+    
+    <Style x:Key="Stage5windowBackground" TargetType="Border">
+        <Setter Property="Background" Value="#001d42"/>
+    </Style>
+    
+    <Style x:Key="Stage6windowBackground" TargetType="Border">
+        <Setter Property="Background" Value="#01003c"/>
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ КНОПОК (CSS button, #load, .toggleNormal, etc.)
+         В HTML: button { height, background, border, color, font-size }
+         ========================================================================== -->
+    
+    <!-- Базовый стиль кнопки (аналог #load, button) -->
+    <Style x:Key="BaseButton" TargetType="Button">
+        <Setter Property="Height" Value="33.28"/> <!-- 2.08em от 16px -->
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Foreground" Value="{StaticResource ButtonTextBrush}"/>
+        <Setter Property="FontSize" Value="13.44"/> <!-- 0.84em от 16px -->
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="2">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ButtonHoverBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Toggle кнопки (toggleNormal, toggleConfirm, toggleHover, toggleMax, toggleAuto, specialToggle) -->
+    <Style x:Key="ToggleNormal" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Foreground" Value="{StaticResource RedTextBrush}"/>
+        <Setter Property="BorderBrush" Value="Crimson"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="Width" Value="44.8"/> <!-- 2.8em -->
+        <Setter Property="Height" Value="26.08"/> <!-- 1.63em -->
+    </Style>
+    
+    <Style x:Key="ToggleConfirm" TargetType="Button" BasedOn="{StaticResource ToggleNormal}">
+    </Style>
+    
+    <Style x:Key="ToggleHover" TargetType="Button" BasedOn="{StaticResource ToggleNormal}">
+        <Setter Property="FontSize" Value="14.72"/> <!-- 0.92em -->
+        <Setter Property="Width" Value="169.6"/> <!-- 10.6em -->
+    </Style>
+    
+    <Style x:Key="ToggleMax" TargetType="Button" BasedOn="{StaticResource ToggleNormal}">
+        <Setter Property="FontSize" Value="14.72"/>
+        <Setter Property="Width" Value="134.4"/> <!-- 8.4em -->
+    </Style>
+    
+    <Style x:Key="ToggleAuto" TargetType="Button" BasedOn="{StaticResource ToggleNormal}">
+        <Setter Property="Width" Value="86.4"/> <!-- 5.4em -->
+        <Setter Property="Height" Value="28.48"/> <!-- 1.78em -->
+    </Style>
+    
+    <Style x:Key="SpecialToggle" TargetType="Button" BasedOn="{StaticResource ToggleNormal}">
+    </Style>
+
+    <!-- Hollow кнопка -->
+    <Style x:Key="HollowButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+    </Style>
+
+    <!-- Select кнопка (button.selectBtn) -->
+    <Style x:Key="SelectBtn" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Foreground}"/>
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Foreground}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=FontSize}"/>
+        <Setter Property="Height" Value="Auto"/>
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ INPUT (CSS input[type="number"], input[type="text"])
+         ========================================================================== -->
+    
+    <Style x:Key="NumberInput" TargetType="TextBox">
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="{StaticResource InputBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Foreground" Value="{StaticResource InputTextBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="Width" Value="86.4"/> <!-- 5.4em -->
+        <Setter Property="Height" Value="27.2"/> <!-- 1.7em -->
+        <Setter Property="FontSize" Value="13.44"/> <!-- 0.84em -->
+        <Setter Property="Padding" Value="1.6,2"/> <!-- 0.1em, 0.2em -->
+        <Setter Property="FontFamily" Value="{StaticResource InterFont}"/>
+    </Style>
+    
+    <Style x:Key="TextInput" TargetType="TextBox" BasedOn="{StaticResource NumberInput}">
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ SCROLLBAR (CSS ::-webkit-scrollbar)
+         В WPF требуется кастомизация через ControlTemplate
+         ========================================================================== -->
+    
+    <!-- Примечание: Полная кастомизация Scrollbar в WPF требует сложного ControlTemplate.
+         Здесь приведены базовые цвета. Для полной реализации см. документацию Microsoft. -->
+    <Style x:Key="CustomScrollBar" TargetType="ScrollBar">
+        <Setter Property="Background" Value="{StaticResource FooterBrush}"/>
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ ИЗОБРАЖЕНИЙ (CSS input[type="image"], img)
+         ========================================================================== -->
+    
+    <Style x:Key="GameImage" TargetType="Image">
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="Width" Value="32"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
+    </Style>
+    
+    <Style x:Key="GameImageButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Width" Value="32"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ POPUP МЕНЮ (CSS .popUpMenu, #hoverWindow)
+         ========================================================================== -->
+    
+    <Style x:Key="PopUpMenu" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource WindowBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="7"/>
+        <Setter Property="Padding" Value="8,8,9.6"/> <!-- 0.5em, 0.6em, 0.6em -->
+        <Setter Property="MinWidth" Value="Auto"/>
+        <Setter Property="MaxWidth" Value="880"/> <!-- min(55em, 95vw) -->
+    </Style>
+    
+    <Style x:Key="HoverWindow" TargetType="Border" BasedOn="{StaticResource PopUpMenu}">
+        <Setter Property="FontSize" Value="14.72"/> <!-- 0.92em -->
+        <Setter Property="Padding" Value="3.2,8,4.8"/> <!-- 0.2em, 0.5em, 0.3em -->
+        <Setter Property="IsHitTestVisible" Value="False"/>
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ КОНТЕЙНЕРОВ (CSS .insideTab, #resets, #buildings, etc.)
+         ========================================================================== -->
+    
+    <Style x:Key="InsideTab" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Vertical"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,16,0,0"/> <!-- min(2vh, 1rem) -->
+    </Style>
+    
+    <Style x:Key="ResetsSection" TargetType="Section">
+        <Setter Property="Background" Value="{StaticResource WindowBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="8,8,12.8"/> <!-- 0.5em, 0.8em, 0.8em -->
+    </Style>
+
+    <!-- ============================================================================
+         СТИЛИ ДЛЯ SPECIFIC ELEMENTS (CSS #loading, #alertMain, #offlineMain, etc.)
+         Эти стили требуют конкретных имен элементов в XAML
+         ========================================================================== -->
+    
+    <!-- Пример стиля для Alert (аналог #alertMain > article) -->
+    <Style x:Key="AlertArticle" TargetType="Border">
+        <Setter Property="Width" Value="384"/> <!-- 24rem -->
+        <Setter Property="MaxWidth" Value="80%"/>
+        <Setter Property="Height" Value="320"/> <!-- 20rem -->
+        <Setter Property="MaxHeight" Value="90%"/>
+        <Setter Property="Background" Value="{StaticResource WindowBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="11.2,12.8,14.4"/> <!-- 0.7em, 0.8em, 0.9em -->
+    </Style>
+    
+    <!-- Пример стиля для Offline (аналог #offlineMain > div) -->
+    <Style x:Key="OfflineDiv" TargetType="Border">
+        <Setter Property="Width" Value="672"/> <!-- 42rem -->
+        <Setter Property="MaxWidth" Value="94%"/>
+        <Setter Property="Background" Value="{StaticResource WindowBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="8,8,9.6"/> <!-- 0.5em, 0.6em, 0.6em -->
+    </Style>
+
+    <!-- ============================================================================
+         ПРИМЕЧАНИЯ ПО ИСПОЛЬЗОВАНИЮ
+         ========================================================================== -->
+    
+    <!--
+    КАК ПРИМЕНЯТЬ СТИЛИ В XAML:
+    
+    1. Для TextBlock с цветовым стилем:
+       <TextBlock Text="Привет" Style="{StaticResource CyanText}"/>
+    
+    2. Для Button с базовым стилем:
+       <Button Content="Нажми" Style="{StaticResource BaseButton}"/>
+    
+    3. Для Button с toggle стилем:
+       <Button Content="Toggle" Style="{StaticResource ToggleNormal}"/>
+    
+    4. Для Image с границей стадии:
+       <Image Source="image.png" Style="{StaticResource Stage1borderImage}"/>
+    
+    5. Для TextBox (input):
+       <TextBox Text="123" Style="{StaticResource NumberInput}"/>
+    
+    6. Наследование стилей:
+       Если нужно комбинировать стили, используйте BasedOn:
+       <Style x:Key="MyCustomButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+           <Setter Property="Width" Value="100"/>
+       </Style>
+    
+    ВАЖНО: 
+    - Все размеры указаны в пикселях (конвертированы из em/rem/vw/vh)
+    - Для адаптивности рассмотрите использование Viewbox или относительных размеров
+    - Анимации и переходы (transitions) в WPF реализуются через Storyboard
+    - Псевдоклассы (:hover, :disabled) реализованы через Triggers в ControlTemplate
+    -->
+
+</ResourceDictionary>
