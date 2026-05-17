@@ -7,6 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!-- Подключение файла стилей -->
+                <ResourceDictionary Source="/ImageLibrary;component/ImageDictionary.xaml"/>
                 <ResourceDictionary Source="Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

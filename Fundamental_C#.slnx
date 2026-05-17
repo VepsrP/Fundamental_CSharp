@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Fundamental/Fundamental.csproj" />
+  <Project Path="ImageLibrary/ImageLibrary.csproj" Id="0fa63a87-c4ae-4bbe-8d6f-904ef8f979dc" />
 </Solution>

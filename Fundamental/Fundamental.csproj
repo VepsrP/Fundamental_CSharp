@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ImageLibrary\ImageLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
