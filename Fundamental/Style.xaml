@@ -1,6 +1,5 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Fundamental_2">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <!-- Основные цвета фона и окон -->
     <Color x:Key="BackgroundColor">#030012</Color>
@@ -20,7 +19,7 @@
     <Color x:Key="TabStrangenessColor">#00b100</Color>
     <Color x:Key="TabInflationColor">#6c1ad1</Color>
     
-    <!-- Цвета наведения и ховера -->
+    <!-- Цвета наведения -->
     <Color x:Key="HollowHoverColor">#170089</Color>
     <Color x:Key="FooterButtonHoverColor">#181818</Color>
     
@@ -37,8 +36,8 @@
     <Color x:Key="OrangeTextColor">DarkOrange</Color>
     <Color x:Key="GrayTextColor">#8f8f8f</Color>
     <Color x:Key="OrchidTextColor">#e14bdb</Color>
-    <Color x:Key="DarkorchidTextColor">#bd24ef</Color>
-    <Color x:Key="DarkvioletTextColor">#8b3cec</Color>
+    <Color x:Key="DarkOrchidTextColor">#bd24ef</Color>
+    <Color x:Key="DarkVioletTextColor">#8b3cec</Color>
     <Color x:Key="BrownTextColor">#9b7346</Color>
     <Color x:Key="RedTextColor">#eb0000</Color>
     <Color x:Key="GreenTextColor">#00e900</Color>
@@ -102,8 +101,8 @@
     <SolidColorBrush x:Key="OrangeTextBrush" Color="{StaticResource OrangeTextColor}"/>
     <SolidColorBrush x:Key="GrayTextBrush" Color="{StaticResource GrayTextColor}"/>
     <SolidColorBrush x:Key="OrchidTextBrush" Color="{StaticResource OrchidTextColor}"/>
-    <SolidColorBrush x:Key="DarkorchidTextBrush" Color="{StaticResource DarkorchidTextColor}"/>
-    <SolidColorBrush x:Key="DarkvioletTextBrush" Color="{StaticResource DarkvioletTextColor}"/>
+    <SolidColorBrush x:Key="DarkOrchidTextBrush" Color="{StaticResource DarkorchidTextColor}"/>
+    <SolidColorBrush x:Key="DarkVioletTextBrush" Color="{StaticResource DarkVioletTextColor}"/>
     <SolidColorBrush x:Key="BrownTextBrush" Color="{StaticResource BrownTextColor}"/>
     <SolidColorBrush x:Key="RedTextBrush" Color="{StaticResource RedTextColor}"/>
     <SolidColorBrush x:Key="GreenTextBrush" Color="{StaticResource GreenTextColor}"/>
@@ -171,12 +170,12 @@
         <Setter Property="Foreground" Value="{StaticResource OrchidTextBrush}"/>
     </Style>
     
-    <Style x:Key="DarkorchidText" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource DarkorchidTextBrush}"/>
+    <Style x:Key="DarkOrchidText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource DarkOrchidTextBrush}"/>
     </Style>
     
-    <Style x:Key="DarkvioletText" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource DarkvioletTextBrush}"/>
+    <Style x:Key="DarkVioletText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource DarkVioletTextBrush}"/>
     </Style>
     
     <Style x:Key="BrownText" TargetType="TextBlock">
@@ -204,8 +203,8 @@
     <Style x:Key="OrangeTextLabel" TargetType="Label" BasedOn="{StaticResource OrangeText}"/>
     <Style x:Key="GrayTextLabel" TargetType="Label" BasedOn="{StaticResource GrayText}"/>
     <Style x:Key="OrchidTextLabel" TargetType="Label" BasedOn="{StaticResource OrchidText}"/>
-    <Style x:Key="DarkorchidTextLabel" TargetType="Label" BasedOn="{StaticResource DarkorchidText}"/>
-    <Style x:Key="DarkvioletTextLabel" TargetType="Label" BasedOn="{StaticResource DarkvioletText}"/>
+    <Style x:Key="DarkOrchidTextLabel" TargetType="Label" BasedOn="{StaticResource DarkOrchidText}"/>
+    <Style x:Key="DarkVioletTextLabel" TargetType="Label" BasedOn="{StaticResource DarkVioletText}"/>
     <Style x:Key="BrownTextLabel" TargetType="Label" BasedOn="{StaticResource BrownText}"/>
     <Style x:Key="RedTextLabel" TargetType="Label" BasedOn="{StaticResource RedText}"/>
     <Style x:Key="GreenTextLabel" TargetType="Label" BasedOn="{StaticResource GreenText}"/>
@@ -240,37 +239,37 @@
         <Setter Property="BorderBrush" Value="#752f27"/>
     </Style>
     
-    <Style x:Key="Stage1borderImage" TargetType="Border">
+    <Style x:Key="Stage1BorderImage" TargetType="Border">
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#008b8b"/>
     </Style>
     
-    <Style x:Key="Stage2borderImage" TargetType="Border">
+    <Style x:Key="Stage2BorderImage" TargetType="Border">
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#1460a8"/>
     </Style>
     
-    <Style x:Key="Stage3borderImage" TargetType="Border">
+    <Style x:Key="Stage3BorderImage" TargetType="Border">
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#5b5b75"/>
     </Style>
     
-    <Style x:Key="Stage4borderImage" TargetType="Border">
+    <Style x:Key="Stage4BorderImage" TargetType="Border">
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#e87400"/>
     </Style>
     
-    <Style x:Key="Stage5borderImage" TargetType="Border">
+    <Style x:Key="Stage5BorderImage" TargetType="Border">
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#b324e2"/>
     </Style>
     
-    <Style x:Key="Stage6borderImage" TargetType="Border">
+    <Style x:Key="Stage6BorderImage" TargetType="Border">
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#5300c1"/>
     </Style>
     
-    <Style x:Key="StageAllborderImage" TargetType="Border">
+    <Style x:Key="StageAllBorderImage" TargetType="Border">
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="{StaticResource StageImageBorderBrush}"/>
     </Style>
@@ -279,31 +278,31 @@
          СТИЛИ ДЛЯ ГРАНИЦ КНОПОК (CSS классы .stage1borderButton, etc.)
          ========================================================================== -->
     
-    <Style x:Key="Stage1borderButton" TargetType="Button">
+    <Style x:Key="Stage1BorderButton" TargetType="Button">
         <Setter Property="BorderBrush" Value="DarkCyan"/>
     </Style>
     
-    <Style x:Key="Stage2borderButton" TargetType="Button">
+    <Style x:Key="Stage2BorderButton" TargetType="Button">
         <Setter Property="BorderBrush" Value="#386cc7"/>
     </Style>
     
-    <Style x:Key="Stage3borderButton" TargetType="Button">
+    <Style x:Key="Stage3BorderButton" TargetType="Button">
         <Setter Property="BorderBrush" Value="#424242"/>
     </Style>
     
-    <Style x:Key="Stage4borderButton" TargetType="Button">
+    <Style x:Key="Stage4BorderButton" TargetType="Button">
         <Setter Property="BorderBrush" Value="#a35700"/>
     </Style>
     
-    <Style x:Key="Stage5borderButton" TargetType="Button">
+    <Style x:Key="Stage5BorderButton" TargetType="Button">
         <Setter Property="BorderBrush" Value="#8f004c"/>
     </Style>
     
-    <Style x:Key="Stage6borderButton" TargetType="Button">
+    <Style x:Key="Stage6BorderButton" TargetType="Button">
         <Setter Property="BorderBrush" Value="#6c1ad1"/>
     </Style>
     
-    <Style x:Key="StageAllborderButton" TargetType="Button">
+    <Style x:Key="StageAllBorderButton" TargetType="Button">
         <Setter Property="BorderBrush" Value="{StaticResource StageButtonBorderBrush}"/>
     </Style>
 
@@ -311,27 +310,27 @@
          СТИЛИ ДЛЯ ФОНА ОКОН (CSS классы .stage1windowBackground, etc.)
          ========================================================================== -->
     
-    <Style x:Key="Stage1windowBackground" TargetType="Border">
+    <Style x:Key="Stage1WindowBackground" TargetType="Border">
         <Setter Property="Background" Value="#12121c"/>
     </Style>
     
-    <Style x:Key="Stage2windowBackground" TargetType="Border">
+    <Style x:Key="Stage2WindowBackground" TargetType="Border">
         <Setter Property="Background" Value="#000052"/>
     </Style>
     
-    <Style x:Key="Stage3windowBackground" TargetType="Border">
+    <Style x:Key="Stage3WindowBackground" TargetType="Border">
         <Setter Property="Background" Value="#2e1200"/>
     </Style>
     
-    <Style x:Key="Stage4windowBackground" TargetType="Border">
+    <Style x:Key="Stage4WindowBackground" TargetType="Border">
         <Setter Property="Background" Value="#4e0000"/>
     </Style>
     
-    <Style x:Key="Stage5windowBackground" TargetType="Border">
+    <Style x:Key="Stage5WindowBackground" TargetType="Border">
         <Setter Property="Background" Value="#001d42"/>
     </Style>
     
-    <Style x:Key="Stage6windowBackground" TargetType="Border">
+    <Style x:Key="Stage6WindowBackground" TargetType="Border">
         <Setter Property="Background" Value="#01003c"/>
     </Style>
 

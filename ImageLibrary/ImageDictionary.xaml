@@ -1,25 +1,356 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Existing Items -->
     <BitmapImage x:Key="Asteroid" UriSource="/ImageLibrary;component/Images/Asteroid.png"/>
     <BitmapImage x:Key="Atom" UriSource="/ImageLibrary;component/Images/Atom.png"/>
-    <BitmapImage x:Key="Auto_S1" UriSource="/ImageLibrary;component/Images/Auto S1.png"/>
-    <BitmapImage x:Key="Auto_S2" UriSource="/ImageLibrary;component/Images/Auto S2.png"/>
-    <BitmapImage x:Key="Auto_S3" UriSource="/ImageLibrary;component/Images/Auto S3.png"/>
-    <BitmapImage x:Key="Auto_S4" UriSource="/ImageLibrary;component/Images/Auto S4.png"/>
-    <BitmapImage x:Key="Auto_S5" UriSource="/ImageLibrary;component/Images/Auto S5.png"/>
+    <BitmapImage x:Key="AutoS1" UriSource="/ImageLibrary;component/Images/Auto S1.png"/>
+    <BitmapImage x:Key="AutoS2" UriSource="/ImageLibrary;component/Images/Auto S2.png"/>
+    <BitmapImage x:Key="AutoS3" UriSource="/ImageLibrary;component/Images/Auto S3.png"/>
+    <BitmapImage x:Key="AutoS4" UriSource="/ImageLibrary;component/Images/Auto S4.png"/>
+    <BitmapImage x:Key="AutoS5" UriSource="/ImageLibrary;component/Images/Auto S5.png"/>
     <BitmapImage x:Key="Auto" UriSource="/ImageLibrary;component/Images/Auto.png"/>
     <BitmapImage x:Key="Automatization" UriSource="/ImageLibrary;component/Images/Automatization.png"/>
-    <BitmapImage x:Key="Better_water" UriSource="/ImageLibrary;component/Images/Better water.png"/>
-    <BitmapImage x:Key="Black_hole" UriSource="/ImageLibrary;component/Images/Black hole.png"/>
-    <BitmapImage x:Key="Blue_hypergiant" UriSource="/ImageLibrary;component/Images/Blue hypergiant.png"/>
-    <BitmapImage x:Key="Boost_Stage_1" UriSource="/ImageLibrary;component/Images/Boost Stage 1.png"/>
-    <BitmapImage x:Key="Boost_Stage_2" UriSource="/ImageLibrary;component/Images/Boost Stage 2.png"/>
-    <BitmapImage x:Key="Boost_Stage_3" UriSource="/ImageLibrary;component/Images/Boost Stage 3.png"/>
-    <BitmapImage x:Key="Boost_Stage_4" UriSource="/ImageLibrary;component/Images/Boost Stage 4.png"/>
-    <BitmapImage x:Key="Boost_Stage_5" UriSource="/ImageLibrary;component/Images/Boost Stage 5.png"/>
-    <BitmapImage x:Key="Brown_dwarf_hot" UriSource="/ImageLibrary;component/Images/Brown dwarf hot.png"/>
-    <BitmapImage x:Key="Brown_dwarf_time_hot" UriSource="/ImageLibrary;component/Images/Brown dwarf time hot.png"/>
-    <BitmapImage x:Key="Brown_dwarf_time" UriSource="/ImageLibrary;component/Images/Brown dwarf time.png"/>
-    <BitmapImage x:Key="Brown_dwarf" UriSource="/ImageLibrary;component/Images/Brown dwarf.png"/>
-    <BitmapImage x:Key="Brown_dwarf-" UriSource="/ImageLibrary;component/Images/Brown dwarf-.png"/>
+    <BitmapImage x:Key="BetterWater" UriSource="/ImageLibrary;component/Images/Better water.png"/>
+    <BitmapImage x:Key="BlackHole" UriSource="/ImageLibrary;component/Images/Black hole.png"/>
+    <BitmapImage x:Key="BlueHypergiant" UriSource="/ImageLibrary;component/Images/Blue hypergiant.png"/>
+    <BitmapImage x:Key="BoostStage1" UriSource="/ImageLibrary;component/Images/Boost Stage 1.png"/>
+    <BitmapImage x:Key="BoostStage2" UriSource="/ImageLibrary;component/Images/Boost Stage 2.png"/>
+    <BitmapImage x:Key="BoostStage3" UriSource="/ImageLibrary;component/Images/Boost Stage 3.png"/>
+    <BitmapImage x:Key="BoostStage4" UriSource="/ImageLibrary;component/Images/Boost Stage 4.png"/>
+    <BitmapImage x:Key="BoostStage5" UriSource="/ImageLibrary;component/Images/Boost Stage 5.png"/>
+    <BitmapImage x:Key="BrownDwarfHot" UriSource="/ImageLibrary;component/Images/Brown dwarf hot.png"/>
+    <BitmapImage x:Key="BrownDwarfTimeHot" UriSource="/ImageLibrary;component/Images/Brown dwarf time hot.png"/>
+    <BitmapImage x:Key="BrownDwarfTime" UriSource="/ImageLibrary;component/Images/Brown dwarf time.png"/>
+    <BitmapImage x:Key="BrownDwarf" UriSource="/ImageLibrary;component/Images/Brown dwarf.png"/>
+    <BitmapImage x:Key="BrownDwarfMinus" UriSource="/ImageLibrary;component/Images/Brown dwarf-.png"/>
+
+    <!-- Newly Added Items -->
+    <BitmapImage x:Key="CloudResearches" UriSource="/ImageLibrary;component/Images/Cloud Researches.png"/>
+    <BitmapImage x:Key="CloudsPlus" UriSource="/ImageLibrary;component/Images/Clouds plus.png"/>
+    <BitmapImage x:Key="Clouds" UriSource="/ImageLibrary;component/Images/Clouds.png"/>
+    <BitmapImage x:Key="CollapseAuto" UriSource="/ImageLibrary;component/Images/Collapse auto.png"/>
+    <BitmapImage x:Key="CollapseResearches" UriSource="/ImageLibrary;component/Images/Collapse Researches.png"/>
+    <BitmapImage x:Key="CollapseToggle" UriSource="/ImageLibrary;component/Images/Collapse toggle.png"/>
+    <BitmapImage x:Key="CosmicDust" UriSource="/ImageLibrary;component/Images/Cosmic dust.png"/>
+    <BitmapImage x:Key="CosmicMass" UriSource="/ImageLibrary;component/Images/Cosmic mass.png"/>
+    <BitmapImage x:Key="Cosmon" UriSource="/ImageLibrary;component/Images/Cosmon.png"/>
+    <BitmapImage x:Key="DarkEnergyResearches" UriSource="/ImageLibrary;component/Images/Dark energy Researches.png"/>
+    <BitmapImage x:Key="DarkEnergy" UriSource="/ImageLibrary;component/Images/Dark energy.png"/>
+    <BitmapImage x:Key="DarkFluid" UriSource="/ImageLibrary;component/Images/Dark fluid.png"/>
+    <BitmapImage x:Key="DarkMatter" UriSource="/ImageLibrary;component/Images/Dark matter.png"/>
+    <BitmapImage x:Key="DarkPlanet" UriSource="/ImageLibrary;component/Images/Dark planet.png"/>
+    <BitmapImage x:Key="Darkness" UriSource="/ImageLibrary;component/Images/Darkness.png"/>
+    <BitmapImage x:Key="DischargePlus1" UriSource="/ImageLibrary;component/Images/Discharge +1.png"/>
+    <BitmapImage x:Key="DischargeAuto" UriSource="/ImageLibrary;component/Images/Discharge auto.png"/>
+    <BitmapImage x:Key="DischargeToggle" UriSource="/ImageLibrary;component/Images/Discharge toggle.png"/>
+    <BitmapImage x:Key="Drop" UriSource="/ImageLibrary;component/Images/Drop.png"/>
+    <BitmapImage x:Key="DropsRecycle" UriSource="/ImageLibrary;component/Images/Drops recycle.png"/>
+    <BitmapImage x:Key="Dust" UriSource="/ImageLibrary;component/Images/Dust.png"/>
+
+    <!-- Elements 0-36 -->
+    <BitmapImage x:Key="Element0" UriSource="/ImageLibrary;component/Images/Element0.png"/>
+    <BitmapImage x:Key="Element1" UriSource="/ImageLibrary;component/Images/Element1.png"/>
+    <BitmapImage x:Key="Element2" UriSource="/ImageLibrary;component/Images/Element2.png"/>
+    <BitmapImage x:Key="Element3" UriSource="/ImageLibrary;component/Images/Element3.png"/>
+    <BitmapImage x:Key="Element4" UriSource="/ImageLibrary;component/Images/Element4.png"/>
+    <BitmapImage x:Key="Element5" UriSource="/ImageLibrary;component/Images/Element5.png"/>
+    <BitmapImage x:Key="Element6" UriSource="/ImageLibrary;component/Images/Element6.png"/>
+    <BitmapImage x:Key="Element7" UriSource="/ImageLibrary;component/Images/Element7.png"/>
+    <BitmapImage x:Key="Element8" UriSource="/ImageLibrary;component/Images/Element8.png"/>
+    <BitmapImage x:Key="Element9" UriSource="/ImageLibrary;component/Images/Element9.png"/>
+    <BitmapImage x:Key="Element10" UriSource="/ImageLibrary;component/Images/Element10.png"/>
+    <BitmapImage x:Key="Element11" UriSource="/ImageLibrary;component/Images/Element11.png"/>
+    <BitmapImage x:Key="Element12" UriSource="/ImageLibrary;component/Images/Element12.png"/>
+    <BitmapImage x:Key="Element13" UriSource="/ImageLibrary;component/Images/Element13.png"/>
+    <BitmapImage x:Key="Element14" UriSource="/ImageLibrary;component/Images/Element14.png"/>
+    <BitmapImage x:Key="Element15" UriSource="/ImageLibrary;component/Images/Element15.png"/>
+    <BitmapImage x:Key="Element16" UriSource="/ImageLibrary;component/Images/Element16.png"/>
+    <BitmapImage x:Key="Element17" UriSource="/ImageLibrary;component/Images/Element17.png"/>
+    <BitmapImage x:Key="Element18" UriSource="/ImageLibrary;component/Images/Element18.png"/>
+    <BitmapImage x:Key="Element19" UriSource="/ImageLibrary;component/Images/Element19.png"/>
+    <BitmapImage x:Key="Element20" UriSource="/ImageLibrary;component/Images/Element20.png"/>
+    <BitmapImage x:Key="Element21" UriSource="/ImageLibrary;component/Images/Element21.png"/>
+    <BitmapImage x:Key="Element22" UriSource="/ImageLibrary;component/Images/Element22.png"/>
+    <BitmapImage x:Key="Element23" UriSource="/ImageLibrary;component/Images/Element23.png"/>
+    <BitmapImage x:Key="Element24" UriSource="/ImageLibrary;component/Images/Element24.png"/>
+    <BitmapImage x:Key="Element25" UriSource="/ImageLibrary;component/Images/Element25.png"/>
+    <BitmapImage x:Key="Element26" UriSource="/ImageLibrary;component/Images/Element26.png"/>
+    <BitmapImage x:Key="Element27" UriSource="/ImageLibrary;component/Images/Element27.png"/>
+    <BitmapImage x:Key="Element28" UriSource="/ImageLibrary;component/Images/Element28.png"/>
+    <BitmapImage x:Key="Element29" UriSource="/ImageLibrary;component/Images/Element29.png"/>
+    <BitmapImage x:Key="Element30" UriSource="/ImageLibrary;component/Images/Element30.png"/>
+    <BitmapImage x:Key="Element31" UriSource="/ImageLibrary;component/Images/Element31.png"/>
+    <BitmapImage x:Key="Element32" UriSource="/ImageLibrary;component/Images/Element32.png"/>
+    <BitmapImage x:Key="Element33" UriSource="/ImageLibrary;component/Images/Element33.png"/>
+    <BitmapImage x:Key="Element34" UriSource="/ImageLibrary;component/Images/Element34.png"/>
+    <BitmapImage x:Key="Element35" UriSource="/ImageLibrary;component/Images/Element35.png"/>
+    <BitmapImage x:Key="Element36" UriSource="/ImageLibrary;component/Images/Element36.png"/>
+
+    <BitmapImage x:Key="ElementsAuto" UriSource="/ImageLibrary;component/Images/Elements auto.png"/>
+    <BitmapImage x:Key="Elements" UriSource="/ImageLibrary;component/Images/Elements.png"/>
+    <BitmapImage x:Key="EndToggle" UriSource="/ImageLibrary;component/Images/End toggle.png"/>
+    <BitmapImage x:Key="EnergyMass" UriSource="/ImageLibrary;component/Images/Energy mass.png"/>
+    <BitmapImage x:Key="EnergyPreon" UriSource="/ImageLibrary;component/Images/Energy Preon.png"/>
+    <BitmapImage x:Key="EnergyRecycle" UriSource="/ImageLibrary;component/Images/Energy recycle.png"/>
+    <BitmapImage x:Key="EnergyResearches" UriSource="/ImageLibrary;component/Images/Energy Researches.png"/>
+    <BitmapImage x:Key="Energy" UriSource="/ImageLibrary;component/Images/Energy.png"/>
+    <BitmapImage x:Key="FalseVacuum" UriSource="/ImageLibrary;component/Images/False vacuum.png"/>
+    <BitmapImage x:Key="GalacticTide" UriSource="/ImageLibrary;component/Images/Galactic tide.png"/>
+    <BitmapImage x:Key="GalaxyAuto" UriSource="/ImageLibrary;component/Images/Galaxy auto.png"/>
+    <BitmapImage x:Key="GalaxyGroup" UriSource="/ImageLibrary;component/Images/Galaxy group.png"/>
+    <BitmapImage x:Key="GalaxyResearches" UriSource="/ImageLibrary;component/Images/Galaxy Researches.png"/>
+    <BitmapImage x:Key="Galaxy" UriSource="/ImageLibrary;component/Images/Galaxy.png"/>
+    <BitmapImage x:Key="Giant" UriSource="/ImageLibrary;component/Images/Giant.png"/>
+    <BitmapImage x:Key="GravitationalBound" UriSource="/ImageLibrary;component/Images/Gravitational bound.png"/>
+    <BitmapImage x:Key="Inflaton" UriSource="/ImageLibrary;component/Images/Inflaton.png"/>
+    <BitmapImage x:Key="Instability" UriSource="/ImageLibrary;component/Images/Instability.png"/>
+    <BitmapImage x:Key="Lake" UriSource="/ImageLibrary;component/Images/Lake.png"/>
+    <BitmapImage x:Key="LightMatter" UriSource="/ImageLibrary;component/Images/Light matter.png"/>
+    <BitmapImage x:Key="LightPlanet" UriSource="/ImageLibrary;component/Images/Light planet.png"/>
+    <BitmapImage x:Key="MainSequenceMass" UriSource="/ImageLibrary;component/Images/Main sequence mass.png"/>
+    <BitmapImage x:Key="MassRecycle" UriSource="/ImageLibrary;component/Images/Mass recycle.png"/>
+    <BitmapImage x:Key="MassMinus" UriSource="/ImageLibrary;component/Images/Mass-.png"/>
+    <BitmapImage x:Key="Mass" UriSource="/ImageLibrary;component/Images/Mass.png"/>
+    <BitmapImage x:Key="MergeAuto" UriSource="/ImageLibrary;component/Images/Merge auto.png"/>
+    <BitmapImage x:Key="MergeToggle" UriSource="/ImageLibrary;component/Images/Merge toggle.png"/>
+    <BitmapImage x:Key="Meteoroids" UriSource="/ImageLibrary;component/Images/Meteoroids.png"/>
+    <BitmapImage x:Key="Milestones" UriSource="/ImageLibrary;component/Images/Milestones.png"/>
+    <BitmapImage x:Key="Missing" UriSource="/ImageLibrary;component/Images/Missing.png"/>
+    <BitmapImage x:Key="Molecule" UriSource="/ImageLibrary;component/Images/Molecule.png"/>
+    <BitmapImage x:Key="MoreCosmon" UriSource="/ImageLibrary;component/Images/More Cosmon.png"/>
+    <BitmapImage x:Key="NaturalSatellite" UriSource="/ImageLibrary;component/Images/Natural satellite.png"/>
+    <BitmapImage x:Key="NebulaPlus" UriSource="/ImageLibrary;component/Images/Nebula+.png"/>
+    <BitmapImage x:Key="Nebula" UriSource="/ImageLibrary;component/Images/Nebula.png"/>
+    <BitmapImage x:Key="NeutronStar" UriSource="/ImageLibrary;component/Images/Neutron star.png"/>
+    <BitmapImage x:Key="Neutronium" UriSource="/ImageLibrary;component/Images/Neutronium.png"/>
+    <BitmapImage x:Key="NucleationToggle" UriSource="/ImageLibrary;component/Images/Nucleation toggle.png"/>
+    <BitmapImage x:Key="OceanWorld" UriSource="/ImageLibrary;component/Images/Ocean world.png"/>
+    <BitmapImage x:Key="Ocean" UriSource="/ImageLibrary;component/Images/Ocean.png"/>
+    <BitmapImage x:Key="Offline" UriSource="/ImageLibrary;component/Images/Offline.png"/>
+    <BitmapImage x:Key="OrangeDwarf" UriSource="/ImageLibrary;component/Images/Orange dwarf.png"/>
+    <BitmapImage x:Key="ParticlePlus" UriSource="/ImageLibrary;component/Images/Particle+.png"/>
+    <BitmapImage x:Key="Particle" UriSource="/ImageLibrary;component/Images/Particle.png"/>
+    <BitmapImage x:Key="Planet" UriSource="/ImageLibrary;component/Images/Planet.png"/>
+    <BitmapImage x:Key="Planetesimal" UriSource="/ImageLibrary;component/Images/Planetesimal.png"/>
+    <BitmapImage x:Key="Pond" UriSource="/ImageLibrary;component/Images/Pond.png"/>
+    <BitmapImage x:Key="Preon" UriSource="/ImageLibrary;component/Images/Preon.png"/>
+    <BitmapImage x:Key="Protogalaxy" UriSource="/ImageLibrary;component/Images/Protogalaxy.png"/>
+    <BitmapImage x:Key="Protoplanet" UriSource="/ImageLibrary;component/Images/Protoplanet.png"/>
+    <BitmapImage x:Key="Protostar" UriSource="/ImageLibrary;component/Images/Protostar.png"/>
+    <BitmapImage x:Key="PuddleBig" UriSource="/ImageLibrary;component/Images/Puddle big.png"/>
+    <BitmapImage x:Key="Puddle" UriSource="/ImageLibrary;component/Images/Puddle.png"/>
+    <BitmapImage x:Key="QuarkStar" UriSource="/ImageLibrary;component/Images/Quark star.png"/>
+    <BitmapImage x:Key="Quarks" UriSource="/ImageLibrary;component/Images/Quarks.png"/>
+    <BitmapImage x:Key="QuasiStar" UriSource="/ImageLibrary;component/Images/Quasi star.png"/>
+    <BitmapImage x:Key="RankAuto" UriSource="/ImageLibrary;component/Images/Rank auto.png"/>
+    <BitmapImage x:Key="RankImprovement" UriSource="/ImageLibrary;component/Images/Rank improvement.png"/>
+    <BitmapImage x:Key="RankLevels" UriSource="/ImageLibrary;component/Images/Rank levels.png"/>
+    <BitmapImage x:Key="RankMax" UriSource="/ImageLibrary;component/Images/Rank max.png"/>
+    <BitmapImage x:Key="RankResearches" UriSource="/ImageLibrary;component/Images/Rank Researches.png"/>
+    <BitmapImage x:Key="RankToggle" UriSource="/ImageLibrary;component/Images/Rank toggle.png"/>
+    <BitmapImage x:Key="RedGiantPlus" UriSource="/ImageLibrary;component/Images/Red giant+.png"/>
+    <BitmapImage x:Key="RedGiant" UriSource="/ImageLibrary;component/Images/Red giant.png"/>
+    <BitmapImage x:Key="RedSupergiant" UriSource="/ImageLibrary;component/Images/Red supergiant.png"/>
+
+    <!-- Research A -->
+    <BitmapImage x:Key="ResearchA1" UriSource="/ImageLibrary;component/Images/ResearchA1.png"/>
+    <BitmapImage x:Key="ResearchA2" UriSource="/ImageLibrary;component/Images/ResearchA2.png"/>
+    <BitmapImage x:Key="ResearchA3" UriSource="/ImageLibrary;component/Images/ResearchA3.png"/>
+    <BitmapImage x:Key="ResearchA4" UriSource="/ImageLibrary;component/Images/ResearchA4.png"/>
+    <BitmapImage x:Key="ResearchA5" UriSource="/ImageLibrary;component/Images/ResearchA5.png"/>
+    <BitmapImage x:Key="ResearchA6" UriSource="/ImageLibrary;component/Images/ResearchA6.png"/>
+    <BitmapImage x:Key="ResearchA7" UriSource="/ImageLibrary;component/Images/ResearchA7.png"/>
+    <BitmapImage x:Key="ResearchA8" UriSource="/ImageLibrary;component/Images/ResearchA8.png"/>
+    <BitmapImage x:Key="ResearchA9" UriSource="/ImageLibrary;component/Images/ResearchA9.png"/>
+
+    <!-- Research Auto -->
+    <BitmapImage x:Key="ResearchAuto1" UriSource="/ImageLibrary;component/Images/ResearchAuto1.png"/>
+    <BitmapImage x:Key="ResearchAuto2" UriSource="/ImageLibrary;component/Images/ResearchAuto2.png"/>
+    <BitmapImage x:Key="ResearchAuto3" UriSource="/ImageLibrary;component/Images/ResearchAuto3.png"/>
+
+    <!-- Research Clouds -->
+    <BitmapImage x:Key="ResearchClouds1" UriSource="/ImageLibrary;component/Images/ResearchClouds1.png"/>
+    <BitmapImage x:Key="ResearchClouds2" UriSource="/ImageLibrary;component/Images/ResearchClouds2.png"/>
+    <BitmapImage x:Key="ResearchClouds3" UriSource="/ImageLibrary;component/Images/ResearchClouds3.png"/>
+    <BitmapImage x:Key="ResearchClouds4" UriSource="/ImageLibrary;component/Images/ResearchClouds4.png"/>
+    <BitmapImage x:Key="ResearchClouds5" UriSource="/ImageLibrary;component/Images/ResearchClouds5.png"/>
+
+    <!-- Research Collapse -->
+    <BitmapImage x:Key="ResearchCollapse1" UriSource="/ImageLibrary;component/Images/ResearchCollapse1.png"/>
+    <BitmapImage x:Key="ResearchCollapse2" UriSource="/ImageLibrary;component/Images/ResearchCollapse2.png"/>
+    <BitmapImage x:Key="ResearchCollapse3" UriSource="/ImageLibrary;component/Images/ResearchCollapse3.png"/>
+    <BitmapImage x:Key="ResearchCollapse4" UriSource="/ImageLibrary;component/Images/ResearchCollapse4.png"/>
+
+    <!-- Research D -->
+    <BitmapImage x:Key="ResearchD1" UriSource="/ImageLibrary;component/Images/ResearchD1.png"/>
+    <BitmapImage x:Key="ResearchD1L" UriSource="/ImageLibrary;component/Images/ResearchD1_L.png"/>
+    <BitmapImage x:Key="ResearchD2" UriSource="/ImageLibrary;component/Images/ResearchD2.png"/>
+    <BitmapImage x:Key="ResearchD3" UriSource="/ImageLibrary;component/Images/ResearchD3.png"/>
+    <BitmapImage x:Key="ResearchD3L" UriSource="/ImageLibrary;component/Images/ResearchD3_L.png"/>
+    <BitmapImage x:Key="ResearchD4" UriSource="/ImageLibrary;component/Images/ResearchD4.png"/>
+    <BitmapImage x:Key="ResearchD5" UriSource="/ImageLibrary;component/Images/ResearchD5.png"/>
+
+    <!-- Research Dark -->
+    <BitmapImage x:Key="ResearchDark1" UriSource="/ImageLibrary;component/Images/ResearchDark1.png"/>
+    <BitmapImage x:Key="ResearchDark1L" UriSource="/ImageLibrary;component/Images/ResearchDark1_L.png"/>
+    <BitmapImage x:Key="ResearchDark2" UriSource="/ImageLibrary;component/Images/ResearchDark2.png"/>
+    <BitmapImage x:Key="ResearchDark3" UriSource="/ImageLibrary;component/Images/ResearchDark3.png"/>
+    <BitmapImage x:Key="ResearchDark4" UriSource="/ImageLibrary;component/Images/ResearchDark4.png"/>
+    <BitmapImage x:Key="ResearchDark4L" UriSource="/ImageLibrary;component/Images/ResearchDark4_L.png"/>
+    <BitmapImage x:Key="ResearchDark5" UriSource="/ImageLibrary;component/Images/ResearchDark5.png"/>
+
+    <!-- Research Energy -->
+    <BitmapImage x:Key="ResearchEnergy1" UriSource="/ImageLibrary;component/Images/ResearchEnergy1.png"/>
+    <BitmapImage x:Key="ResearchEnergy2" UriSource="/ImageLibrary;component/Images/ResearchEnergy2.png"/>
+    <BitmapImage x:Key="ResearchEnergy3" UriSource="/ImageLibrary;component/Images/ResearchEnergy3.png"/>
+    <BitmapImage x:Key="ResearchEnergy4" UriSource="/ImageLibrary;component/Images/ResearchEnergy4.png"/>
+    <BitmapImage x:Key="ResearchEnergy5" UriSource="/ImageLibrary;component/Images/ResearchEnergy5.png"/>
+    <BitmapImage x:Key="ResearchEnergy6" UriSource="/ImageLibrary;component/Images/ResearchEnergy6.png"/>
+
+    <!-- Research G -->
+    <BitmapImage x:Key="ResearchG1" UriSource="/ImageLibrary;component/Images/ResearchG1.png"/>
+    <BitmapImage x:Key="ResearchG2" UriSource="/ImageLibrary;component/Images/ResearchG2.png"/>
+    <BitmapImage x:Key="ResearchG3" UriSource="/ImageLibrary;component/Images/ResearchG3.png"/>
+    <BitmapImage x:Key="ResearchG4" UriSource="/ImageLibrary;component/Images/ResearchG4.png"/>
+
+    <!-- Research Galaxy -->
+    <BitmapImage x:Key="ResearchGalaxy1" UriSource="/ImageLibrary;component/Images/ResearchGalaxy1.png"/>
+    <BitmapImage x:Key="ResearchGalaxy2" UriSource="/ImageLibrary;component/Images/ResearchGalaxy2.png"/>
+    <BitmapImage x:Key="ResearchGalaxy3" UriSource="/ImageLibrary;component/Images/ResearchGalaxy3.png"/>
+    <BitmapImage x:Key="ResearchGalaxy4" UriSource="/ImageLibrary;component/Images/ResearchGalaxy4.png"/>
+
+    <!-- Research Q -->
+    <BitmapImage x:Key="ResearchQ1" UriSource="/ImageLibrary;component/Images/ResearchQ1.png"/>
+    <BitmapImage x:Key="ResearchQ2" UriSource="/ImageLibrary;component/Images/ResearchQ2.png"/>
+    <BitmapImage x:Key="ResearchQ3" UriSource="/ImageLibrary;component/Images/ResearchQ3.png"/>
+    <BitmapImage x:Key="ResearchQ4" UriSource="/ImageLibrary;component/Images/ResearchQ4.png"/>
+    <BitmapImage x:Key="ResearchQ5" UriSource="/ImageLibrary;component/Images/ResearchQ5.png"/>
+    <BitmapImage x:Key="ResearchQ6" UriSource="/ImageLibrary;component/Images/ResearchQ6.png"/>
+
+    <!-- Research Rank -->
+    <BitmapImage x:Key="ResearchRank1" UriSource="/ImageLibrary;component/Images/ResearchRank1.png"/>
+    <BitmapImage x:Key="ResearchRank2" UriSource="/ImageLibrary;component/Images/ResearchRank2.png"/>
+    <BitmapImage x:Key="ResearchRank3" UriSource="/ImageLibrary;component/Images/ResearchRank3.png"/>
+    <BitmapImage x:Key="ResearchRank4" UriSource="/ImageLibrary;component/Images/ResearchRank4.png"/>
+    <BitmapImage x:Key="ResearchRank5" UriSource="/ImageLibrary;component/Images/ResearchRank5.png"/>
+    <BitmapImage x:Key="ResearchRank6" UriSource="/ImageLibrary;component/Images/ResearchRank6.png"/>
+
+    <!-- Research S -->
+    <BitmapImage x:Key="ResearchS1" UriSource="/ImageLibrary;component/Images/ResearchS1.png"/>
+    <BitmapImage x:Key="ResearchS2" UriSource="/ImageLibrary;component/Images/ResearchS2.png"/>
+    <BitmapImage x:Key="ResearchS3" UriSource="/ImageLibrary;component/Images/ResearchS3.png"/>
+    <BitmapImage x:Key="ResearchS4" UriSource="/ImageLibrary;component/Images/ResearchS4.png"/>
+    <BitmapImage x:Key="ResearchS5" UriSource="/ImageLibrary;component/Images/ResearchS5.png"/>
+    <BitmapImage x:Key="ResearchS6" UriSource="/ImageLibrary;component/Images/ResearchS6.png"/>
+
+    <!-- Research W -->
+    <BitmapImage x:Key="ResearchW1" UriSource="/ImageLibrary;component/Images/ResearchW1.png"/>
+    <BitmapImage x:Key="ResearchW2" UriSource="/ImageLibrary;component/Images/ResearchW2.png"/>
+    <BitmapImage x:Key="ResearchW3" UriSource="/ImageLibrary;component/Images/ResearchW3.png"/>
+    <BitmapImage x:Key="ResearchW4" UriSource="/ImageLibrary;component/Images/ResearchW4.png"/>
+    <BitmapImage x:Key="ResearchW5" UriSource="/ImageLibrary;component/Images/ResearchW5.png"/>
+    <BitmapImage x:Key="ResearchW6" UriSource="/ImageLibrary;component/Images/ResearchW6.png"/>
+
+    <BitmapImage x:Key="Sea" UriSource="/ImageLibrary;component/Images/Sea.png"/>
+    <BitmapImage x:Key="Spread2" UriSource="/ImageLibrary;component/Images/Spread 2.png"/>
+    <BitmapImage x:Key="Spread" UriSource="/ImageLibrary;component/Images/Spread.png"/>
+    <BitmapImage x:Key="Stability" UriSource="/ImageLibrary;component/Images/Stability.png"/>
+    <BitmapImage x:Key="StageAuto" UriSource="/ImageLibrary;component/Images/Stage auto.png"/>
+    <BitmapImage x:Key="StageToggle" UriSource="/ImageLibrary;component/Images/Stage toggle.png"/>
+    <BitmapImage x:Key="Stage" UriSource="/ImageLibrary;component/Images/Stage.png"/>
+
+    <!-- Stage Borders -->
+    <BitmapImage x:Key="Stage1Border" UriSource="/ImageLibrary;component/Images/Stage1 border.png"/>
+    <BitmapImage x:Key="Stage2Border" UriSource="/ImageLibrary;component/Images/Stage2 border.png"/>
+    <BitmapImage x:Key="Stage3Border" UriSource="/ImageLibrary;component/Images/Stage3 border.png"/>
+    <BitmapImage x:Key="Stage4Border" UriSource="/ImageLibrary;component/Images/Stage4 border.png"/>
+    <BitmapImage x:Key="Stage5Border" UriSource="/ImageLibrary;component/Images/Stage5 border.png"/>
+    <BitmapImage x:Key="Stage6Border" UriSource="/ImageLibrary;component/Images/Stage6 border.png"/>
+
+    <BitmapImage x:Key="StarClusterDenser" UriSource="/ImageLibrary;component/Images/Star cluster denser.png"/>
+    <BitmapImage x:Key="StarCluster" UriSource="/ImageLibrary;component/Images/Star cluster.png"/>
+    <BitmapImage x:Key="Stars" UriSource="/ImageLibrary;component/Images/Stars.png"/>
+    <BitmapImage x:Key="StrangeGrowth" UriSource="/ImageLibrary;component/Images/Strange growth.png"/>
+    <BitmapImage x:Key="StrangeQuarksMany" UriSource="/ImageLibrary;component/Images/Strange Quarks many.png"/>
+    <BitmapImage x:Key="StrangeQuarks" UriSource="/ImageLibrary;component/Images/Strange Quarks.png"/>
+    <BitmapImage x:Key="StrangeletsMany" UriSource="/ImageLibrary;component/Images/Strangelets many.png"/>
+    <BitmapImage x:Key="Strangelets" UriSource="/ImageLibrary;component/Images/Strangelets.png"/>
+    <BitmapImage x:Key="Subsatellite" UriSource="/ImageLibrary;component/Images/Subsatellite.png"/>
+    <BitmapImage x:Key="SystemRed" UriSource="/ImageLibrary;component/Images/System red.png"/>
+    <BitmapImage x:Key="TimeFast" UriSource="/ImageLibrary;component/Images/Time fast.png"/>
+    <BitmapImage x:Key="Time" UriSource="/ImageLibrary;component/Images/Time.png"/>
+    <BitmapImage x:Key="Universe" UriSource="/ImageLibrary;component/Images/Universe.png"/>
+
+    <!-- Upgrades A -->
+    <BitmapImage x:Key="UpgradeA1" UriSource="/ImageLibrary;component/Images/UpgradeA1.png"/>
+    <BitmapImage x:Key="UpgradeA2" UriSource="/ImageLibrary;component/Images/UpgradeA2.png"/>
+    <BitmapImage x:Key="UpgradeA3" UriSource="/ImageLibrary;component/Images/UpgradeA3.png"/>
+    <BitmapImage x:Key="UpgradeA4" UriSource="/ImageLibrary;component/Images/UpgradeA4.png"/>
+    <BitmapImage x:Key="UpgradeA5" UriSource="/ImageLibrary;component/Images/UpgradeA5.png"/>
+    <BitmapImage x:Key="UpgradeA6" UriSource="/ImageLibrary;component/Images/UpgradeA6.png"/>
+    <BitmapImage x:Key="UpgradeA7" UriSource="/ImageLibrary;component/Images/UpgradeA7.png"/>
+    <BitmapImage x:Key="UpgradeA8" UriSource="/ImageLibrary;component/Images/UpgradeA8.png"/>
+    <BitmapImage x:Key="UpgradeA9" UriSource="/ImageLibrary;component/Images/UpgradeA9.png"/>
+    <BitmapImage x:Key="UpgradeA10" UriSource="/ImageLibrary;component/Images/UpgradeA10.png"/>
+    <BitmapImage x:Key="UpgradeA11" UriSource="/ImageLibrary;component/Images/UpgradeA11.png"/>
+    <BitmapImage x:Key="UpgradeA12" UriSource="/ImageLibrary;component/Images/UpgradeA12.png"/>
+    <BitmapImage x:Key="UpgradeA13" UriSource="/ImageLibrary;component/Images/UpgradeA13.png"/>
+    <BitmapImage x:Key="UpgradeA14" UriSource="/ImageLibrary;component/Images/UpgradeA14.png"/>
+
+    <!-- Upgrades D -->
+    <BitmapImage x:Key="UpgradeD1" UriSource="/ImageLibrary;component/Images/UpgradeD1.png"/>
+    <BitmapImage x:Key="UpgradeD1L" UriSource="/ImageLibrary;component/Images/UpgradeD1_L.png"/>
+
+    <!-- Upgrades G -->
+    <BitmapImage x:Key="UpgradeG1" UriSource="/ImageLibrary;component/Images/UpgradeG1.png"/>
+    <BitmapImage x:Key="UpgradeG2" UriSource="/ImageLibrary;component/Images/UpgradeG2.png"/>
+    <BitmapImage x:Key="UpgradeG3" UriSource="/ImageLibrary;component/Images/UpgradeG3.png"/>
+    <BitmapImage x:Key="UpgradeG4" UriSource="/ImageLibrary;component/Images/UpgradeG4.png"/>
+    <BitmapImage x:Key="UpgradeG5" UriSource="/ImageLibrary;component/Images/UpgradeG5.png"/>
+    <BitmapImage x:Key="UpgradeG6" UriSource="/ImageLibrary;component/Images/UpgradeG6.png"/>
+    <BitmapImage x:Key="UpgradeG7" UriSource="/ImageLibrary;component/Images/UpgradeG7.png"/>
+
+    <!-- Upgrades Q -->
+    <BitmapImage x:Key="UpgradeQ1" UriSource="/ImageLibrary;component/Images/UpgradeQ1.png"/>
+    <BitmapImage x:Key="UpgradeQ2" UriSource="/ImageLibrary;component/Images/UpgradeQ2.png"/>
+    <BitmapImage x:Key="UpgradeQ3" UriSource="/ImageLibrary;component/Images/UpgradeQ3.png"/>
+    <BitmapImage x:Key="UpgradeQ3A" UriSource="/ImageLibrary;component/Images/UpgradeQ3_A.png"/>
+    <BitmapImage x:Key="UpgradeQ4" UriSource="/ImageLibrary;component/Images/UpgradeQ4.png"/>
+    <BitmapImage x:Key="UpgradeQ4A" UriSource="/ImageLibrary;component/Images/UpgradeQ4_A.png"/>
+    <BitmapImage x:Key="UpgradeQ5" UriSource="/ImageLibrary;component/Images/UpgradeQ5.png"/>
+    <BitmapImage x:Key="UpgradeQ5A" UriSource="/ImageLibrary;component/Images/UpgradeQ5_A.png"/>
+    <BitmapImage x:Key="UpgradeQ6" UriSource="/ImageLibrary;component/Images/UpgradeQ6.png"/>
+    <BitmapImage x:Key="UpgradeQ7" UriSource="/ImageLibrary;component/Images/UpgradeQ7.png"/>
+    <BitmapImage x:Key="UpgradeQ8" UriSource="/ImageLibrary;component/Images/UpgradeQ8.png"/>
+    <BitmapImage x:Key="UpgradeQ9" UriSource="/ImageLibrary;component/Images/UpgradeQ9.png"/>
+    <BitmapImage x:Key="UpgradeQ10" UriSource="/ImageLibrary;component/Images/UpgradeQ10.png"/>
+    <BitmapImage x:Key="UpgradeQ11" UriSource="/ImageLibrary;component/Images/UpgradeQ11.png"/>
+
+    <BitmapImage x:Key="UpgradesAuto" UriSource="/ImageLibrary;component/Images/Upgrades auto.png"/>
+
+    <!-- Upgrades S -->
+    <BitmapImage x:Key="UpgradeS1" UriSource="/ImageLibrary;component/Images/UpgradeS1.png"/>
+    <BitmapImage x:Key="UpgradeS2" UriSource="/ImageLibrary;component/Images/UpgradeS2.png"/>
+    <BitmapImage x:Key="UpgradeS3" UriSource="/ImageLibrary;component/Images/UpgradeS3.png"/>
+    <BitmapImage x:Key="UpgradeS4" UriSource="/ImageLibrary;component/Images/UpgradeS4.png"/>
+    <BitmapImage x:Key="UpgradeS5" UriSource="/ImageLibrary;component/Images/UpgradeS5.png"/>
+
+    <!-- Upgrades W -->
+    <BitmapImage x:Key="UpgradeW1" UriSource="/ImageLibrary;component/Images/UpgradeW1.png"/>
+    <BitmapImage x:Key="UpgradeW2" UriSource="/ImageLibrary;component/Images/UpgradeW2.png"/>
+    <BitmapImage x:Key="UpgradeW3" UriSource="/ImageLibrary;component/Images/UpgradeW3.png"/>
+    <BitmapImage x:Key="UpgradeW4" UriSource="/ImageLibrary;component/Images/UpgradeW4.png"/>
+    <BitmapImage x:Key="UpgradeW5" UriSource="/ImageLibrary;component/Images/UpgradeW5.png"/>
+    <BitmapImage x:Key="UpgradeW6" UriSource="/ImageLibrary;component/Images/UpgradeW6.png"/>
+    <BitmapImage x:Key="UpgradeW7" UriSource="/ImageLibrary;component/Images/UpgradeW7.png"/>
+    <BitmapImage x:Key="UpgradeW8" UriSource="/ImageLibrary;component/Images/UpgradeW8.png"/>
+    <BitmapImage x:Key="UpgradeW9" UriSource="/ImageLibrary;component/Images/UpgradeW9.png"/>
+
+    <BitmapImage x:Key="VaporizationAuto" UriSource="/ImageLibrary;component/Images/Vaporization auto.png"/>
+    <BitmapImage x:Key="VaporizationImprovement" UriSource="/ImageLibrary;component/Images/Vaporization improvement.png"/>
+    <BitmapImage x:Key="VaporizationToggle" UriSource="/ImageLibrary;component/Images/Vaporization toggle.png"/>
+    <BitmapImage x:Key="Void" UriSource="/ImageLibrary;component/Images/Void.png"/>
+    <BitmapImage x:Key="WaterPlus" UriSource="/ImageLibrary;component/Images/Water+.png"/>
+    <BitmapImage x:Key="Water" UriSource="/ImageLibrary;component/Images/Water.png"/>
+    <BitmapImage x:Key="WhiteDwarf" UriSource="/ImageLibrary;component/Images/White dwarf.png"/>
 </ResourceDictionary>

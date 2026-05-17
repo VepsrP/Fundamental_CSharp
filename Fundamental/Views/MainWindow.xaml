@@ -1,67 +1,66 @@
-﻿<Window x:Class="Fundamental.MainWindow"
+﻿<Window x:Class="Fundamental.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" mc:Ignorable="d"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
         Icon="{StaticResource Stage}"
-        Title="Fundamental" Height="800" Width="1200"
+        Title="{Binding Title}" Height="800" Width="1200"
         WindowStartupLocation="CenterScreen"
         Background="#1a1a1a">
 
     <Window.Resources>
         <!-- Styles -->
-        <Style x:Key="whiteText" TargetType="TextBlock">
+        <Style x:Key="WhiteText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
         </Style>
-        <Style x:Key="redText" TargetType="TextBlock">
+        <Style x:Key="RedText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#FF4444"/>
         </Style>
-        <Style x:Key="greenText" TargetType="TextBlock">
+        <Style x:Key="GreenText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#44FF44"/>
         </Style>
-        <Style x:Key="blueText" TargetType="TextBlock">
+        <Style x:Key="BlueText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#4444FF"/>
         </Style>
-        <Style x:Key="cyanText" TargetType="TextBlock">
+        <Style x:Key="CyanText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#00FFFF"/>
         </Style>
-        <Style x:Key="orangeText" TargetType="TextBlock">
+        <Style x:Key="OrangeText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#FFA500"/>
         </Style>
-        <Style x:Key="grayText" TargetType="TextBlock">
+        <Style x:Key="GrayText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#888888"/>
         </Style>
-        <Style x:Key="darkvioletText" TargetType="TextBlock">
+        <Style x:Key="DarkVioletTextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#9400D3"/>
         </Style>
-        <Style x:Key="darkorchidText" TargetType="TextBlock">
+        <Style x:Key="DarkOrchidTextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#B266CC"/>
         </Style>
-        <Style x:Key="orchidText" TargetType="TextBlock">
+        <Style x:Key="OrchidText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#DA70D6"/>
         </Style>
-        <Style x:Key="yellowText" TargetType="TextBlock">
+        <Style x:Key="YellowText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#FFFF00"/>
         </Style>
 
-        <Style x:Key="bigWord" TargetType="TextBlock" BasedOn="{StaticResource whiteText}">
+        <Style x:Key="BigWord" TargetType="TextBlock" BasedOn="{StaticResource WhiteText}">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        <Style x:Key="biggerWord" TargetType="TextBlock" BasedOn="{StaticResource whiteText}">
+        <Style x:Key="BiggerWord" TargetType="TextBlock" BasedOn="{StaticResource WhiteText}">
             <Setter Property="FontSize" Value="32"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
 
-        <Style x:Key="specialToggle" TargetType="ToggleButton">
+        <Style x:Key="SpecialToggle" TargetType="ToggleButton">
             <Setter Property="Background" Value="#333333"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
 
-        <Style x:Key="hollowButton" TargetType="Button">
+        <Style x:Key="HollowButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="White"/>
@@ -73,11 +72,11 @@
 
     <Grid>
         <!-- Loading Screen -->
-        <Border x:Name="LoadingPanel" Background="#1a1a1a" Visibility="Visible">
+        <Border x:Name="LoadingPanel" Background="#1a1a1a" Visibility="{Binding LoadingPanelVisible}">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Fundamental" Style="{StaticResource biggerWord}" HorizontalAlignment="Center"/>
-                <TextBlock Text="Game is loading. If it won't load (after trying to reload at least once), then can try to report it on discord or github" 
-                          Style="{StaticResource whiteText}" 
+                <TextBlock Text="Fundamental" Style="{StaticResource BiggerWord}" HorizontalAlignment="Center"/>
+                <TextBlock Text="Game is loading. If it don't load (after trying to reload at least once), then can try to report it on discord or GitHub" 
+                          Style="{StaticResource WhiteText}" 
                           TextWrapping="Wrap" 
                           Margin="0,20,0,0"
                           HorizontalAlignment="Center"/>
@@ -85,7 +84,7 @@
         </Border>
 
         <!-- Main Content -->
-        <Grid x:Name="MainContent" Visibility="Collapsed">
+        <Grid x:Name="MainContent" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
@@ -94,7 +93,7 @@
             <!-- Global Toggle Button -->
             <ToggleButton x:Name="GlobalToggle0" 
                          Content="OFF" 
-                         Style="{StaticResource specialToggle}"
+                         Style="{StaticResource SpecialToggle}"
                          HorizontalAlignment="Right" 
                          VerticalAlignment="Top"
                          Visibility="Collapsed"/>
@@ -124,7 +123,7 @@
                     <StackPanel>
                         <TextBlock x:Name="AlertText" 
                                   Text="Welcome back" 
-                                  Style="{StaticResource whiteText}"
+                                  Style="{StaticResource WhiteText}"
                                   Margin="0,0,0,15"
                                   TextWrapping="Wrap"/>
                         <TextBox x:Name="AlertInput" 
@@ -133,10 +132,10 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button x:Name="AlertConfirm" 
                                    Content="Confirm" 
-                                   Style="{StaticResource hollowButton}"/>
+                                   Style="{StaticResource HollowButton}"/>
                             <Button x:Name="AlertCancel" 
                                    Content="Cancel" 
-                                   Style="{StaticResource hollowButton}"
+                                   Style="{StaticResource HollowButton}"
                                    Visibility="Collapsed"
                                    Margin="10,0,0,0"/>
                         </StackPanel>
@@ -157,7 +156,7 @@
                        VerticalAlignment="Center"
                        MinWidth="500">
                     <StackPanel>
-                        <TextBlock Style="{StaticResource whiteText}" TextWrapping="Wrap">
+                        <TextBlock Style="{StaticResource WhiteText}" TextWrapping="Wrap">
                             <Run>Calculating Offline time by using </Run>
                             <Run x:Name="OfflineTick" Text="1"/>
                             <Run> milliseconds per tick. Remains </Run>
@@ -167,19 +166,19 @@
                             <Run>)</Run>
                         </TextBlock>
                         <TextBlock Text="Accelerating too much will break time based autos" 
-                                  Style="{StaticResource whiteText}"
+                                  Style="{StaticResource WhiteText}"
                                   Margin="0,10,0,15"/>
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="OfflineAccelerate" 
                                    Content="Accelerate" 
-                                   Style="{StaticResource hollowButton}"/>
+                                   Style="{StaticResource HollowButton}"/>
                             <Button x:Name="OfflineDeaccelerate" 
                                    Content="Deaccelerate" 
-                                   Style="{StaticResource hollowButton}"
+                                   Style="{StaticResource HollowButton}"
                                    Margin="10,0,0,0"/>
                             <Button x:Name="OfflineCancel" 
                                    Content="Finish now" 
-                                   Style="{StaticResource hollowButton}"
+                                   Style="{StaticResource HollowButton}"
                                    Margin="10,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
@@ -201,7 +200,7 @@
                    Padding="10"
                    BorderBrush="White"
                    BorderThickness="1">
-                <TextBlock x:Name="HoverText" Style="{StaticResource whiteText}"/>
+                <TextBlock x:Name="HoverText" Style="{StaticResource WhiteText}"/>
             </Border>
 
             <!-- Main Body -->
@@ -222,7 +221,7 @@
                                         <!-- Resets Section -->
                                         <GroupBox>
                                             <GroupBox.Header>
-                                                <TextBlock Style="{StaticResource whiteText}">Resets</TextBlock>
+                                                <TextBlock Style="{StaticResource WhiteText}">Resets</TextBlock>
                                             </GroupBox.Header>
                                             <StackPanel Margin="10">
                                                 <!-- End Reset -->
@@ -232,7 +231,7 @@
                                                        Padding="10"
                                                        Margin="0,0,0,10">
                                                     <StackPanel>
-                                                        <TextBlock Style="{StaticResource whiteText}" TextWrapping="Wrap">
+                                                        <TextBlock Style="{StaticResource WhiteText}" TextWrapping="Wrap">
                                                             <Run Foreground="#FF4444">End</Run>
                                                             <Run> reset forces the </Run>
                                                             <Run Foreground="#9400D3">Universe</Run>
@@ -244,7 +243,7 @@
                                                         </TextBlock>
                                                         <Button x:Name="Reset2Button" 
                                                                Content="Missing" 
-                                                               Style="{StaticResource hollowButton}"
+                                                               Style="{StaticResource HollowButton}"
                                                                HorizontalAlignment="Left"
                                                                Margin="0,10,0,0"/>
                                                     </StackPanel>
@@ -257,7 +256,7 @@
                                                        Padding="10"
                                                        Margin="0,0,0,10">
                                                     <StackPanel>
-                                                        <TextBlock Style="{StaticResource whiteText}" TextWrapping="Wrap">
+                                                        <TextBlock Style="{StaticResource WhiteText}" TextWrapping="Wrap">
                                                             <Run>Current Stage is </Run>
                                                             <Run x:Name="StageWord" FontWeight="Bold" FontSize="20">Microworld</Run>
                                                             <Run>.&#10;Resets everything Stage related to </Run>
@@ -269,7 +268,7 @@
                                                         </TextBlock>
                                                         <Button x:Name="Reset1Button" 
                                                                Content="Missing" 
-                                                               Style="{StaticResource hollowButton}"
+                                                               Style="{StaticResource HollowButton}"
                                                                HorizontalAlignment="Left"
                                                                Margin="0,10,0,0"/>
                                                     </StackPanel>
@@ -282,11 +281,11 @@
                                                        Padding="10">
                                                     <StackPanel>
                                                         <TextBlock x:Name="Reset0Description" 
-                                                                  Style="{StaticResource whiteText}" 
+                                                                  Style="{StaticResource WhiteText}" 
                                                                   TextWrapping="Wrap"/>
                                                         <Button x:Name="Reset0Button" 
                                                                Content="Missing" 
-                                                               Style="{StaticResource hollowButton}"
+                                                               Style="{StaticResource HollowButton}"
                                                                HorizontalAlignment="Left"
                                                                Margin="0,10,0,0"/>
                                                     </StackPanel>
@@ -315,7 +314,7 @@
                                                                     <Image Source="{Binding ImageSource}" 
                                                                           Width="64" 
                                                                           Height="64"/>
-                                                                    <TextBlock Style="{StaticResource whiteText}" 
+                                                                    <TextBlock Style="{StaticResource WhiteText}" 
                                                                               HorizontalAlignment="Center">
                                                                         <Run Text="{Binding Current}"/>
                                                                         <Run>(+</Run>
@@ -346,7 +345,7 @@
                                                                           Width="48" 
                                                                           Height="48"/>
                                                                     <StackPanel Grid.Column="1" Margin="10,0">
-                                                                        <TextBlock Style="{StaticResource whiteText}">
+                                                                        <TextBlock Style="{StaticResource WhiteText}">
                                                                             <Run Text="{Binding Name}"/>
                                                                             <Run>: </Run>
                                                                             <Run Text="{Binding Current}" FontWeight="Bold"/>
@@ -354,22 +353,22 @@
                                                                             <Run x:Name="BuildingTrue" Foreground="#FFFF00" Text="{Binding TrueCount}"/>
                                                                             <Run Foreground="#FFFF00">]</Run>
                                                                         </TextBlock>
-                                                                        <TextBlock Style="{StaticResource whiteText}">
+                                                                        <TextBlock Style="{StaticResource WhiteText}">
                                                                             <Run>producing: </Run>
                                                                             <Run Text="{Binding Production}" FontWeight="Bold"/>
                                                                         </TextBlock>
                                                                     </StackPanel>
                                                                     <StackPanel Grid.Column="2">
-                                                                        <TextBlock Style="{StaticResource whiteText}" 
+                                                                        <TextBlock Style="{StaticResource WhiteText}" 
                                                                                   HorizontalAlignment="Center">
                                                                             <Run>x</Run>
                                                                             <Run x:Name="BuyX" Text="{Binding BuyX}"/>
                                                                         </TextBlock>
                                                                         <Button Content="{Binding ButtonText}" 
-                                                                               Style="{StaticResource hollowButton}"
+                                                                               Style="{StaticResource HollowButton}"
                                                                                Margin="0,5,0,0"/>
                                                                         <ToggleButton Content="Auto ON" 
-                                                                                     Style="{StaticResource specialToggle}"
+                                                                                     Style="{StaticResource SpecialToggle}"
                                                                                      IsChecked="{Binding AutoEnabled}"/>
                                                                     </StackPanel>
                                                                 </Grid>
@@ -380,13 +379,13 @@
 
                                                 <!-- Building Toggles -->
                                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                                    <Button Content="Make all" Style="{StaticResource hollowButton}"/>
+                                                    <Button Content="Make all" Style="{StaticResource HollowButton}"/>
                                                     <TextBox x:Name="BuyAnyInput" 
                                                             Width="80" 
                                                             Margin="10,0,0,0"
                                                             Text="1"/>
                                                     <Label VerticalContentAlignment="Center">
-                                                        <TextBlock Style="{StaticResource whiteText}">
+                                                        <TextBlock Style="{StaticResource WhiteText}">
                                                             How many Structures
                                                         </TextBlock>
                                                     </Label>
@@ -395,12 +394,12 @@
                                                             Margin="10,0,0,0"
                                                             Text="1"/>
                                                     <Label VerticalContentAlignment="Center">
-                                                        <TextBlock Style="{StaticResource whiteText}">
+                                                        <TextBlock Style="{StaticResource WhiteText}">
                                                             Auto wait multiplier
                                                         </TextBlock>
                                                     </Label>
                                                     <ToggleButton Content="All ON" 
-                                                                 Style="{StaticResource specialToggle}"
+                                                                 Style="{StaticResource SpecialToggle}"
                                                                  Margin="10,0,0,0"/>
                                                 </StackPanel>
                                             </StackPanel>
@@ -441,11 +440,11 @@
                                     <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock x:Name="ChallengeName" 
-                                                      Style="{StaticResource bigWord}"
+                                                      Style="{StaticResource BigWord}"
                                                       VerticalAlignment="Center"/>
                                             <TextBlock x:Name="ChallengeActive" 
                                                       Text=", active" 
-                                                      Style="{StaticResource greenText}"
+                                                      Style="{StaticResource GreenText}"
                                                       VerticalAlignment="Center"/>
                                         </StackPanel>
                                         <ContentControl x:Name="ChallengeMultiline" Margin="0,10,0,0"/>
@@ -469,12 +468,12 @@
                                VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="Stage Information" 
-                                          Style="{StaticResource bigWord}"
+                                          Style="{StaticResource BigWord}"
                                           Margin="0,0,0,10"/>
                                 <ContentControl x:Name="StageInfoContent"/>
 
                                 <TextBlock Text="Time Information" 
-                                          Style="{StaticResource bigWord}"
+                                          Style="{StaticResource BigWord}"
                                           Margin="0,20,0,10"/>
                                 <ContentControl x:Name="TimeInfoContent"/>
                             </StackPanel>
@@ -494,7 +493,7 @@
                             <TabItem Header="Upgrades">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <StackPanel Margin="10">
-                                        <TextBlock Text="Upgrades" Style="{StaticResource biggerWord}" Margin="0,0,0,10"/>
+                                        <TextBlock Text="Upgrades" Style="{StaticResource BiggerWord}" Margin="0,0,0,10"/>
 
                                         <!-- Upgrades Grid -->
                                         <ItemsControl x:Name="UpgradesList">
@@ -514,7 +513,7 @@
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
 
-                                        <TextBlock Text="Researches" Style="{StaticResource bigWord}" Margin="0,20,0,10"/>
+                                        <TextBlock Text="Researches" Style="{StaticResource BigWord}" Margin="0,20,0,10"/>
 
                                         <!-- Researches -->
                                         <GroupBox Header="Stage Researches" Margin="0,0,0,10">
@@ -532,7 +531,7 @@
                                                                       Width="48" 
                                                                       Height="48"/>
                                                                 <TextBlock Text="{Binding Name}" 
-                                                                          Style="{StaticResource whiteText}"
+                                                                          Style="{StaticResource WhiteText}"
                                                                           HorizontalAlignment="Center"/>
                                                             </StackPanel>
                                                         </CheckBox>
@@ -557,7 +556,7 @@
                                                                       Width="48" 
                                                                       Height="48"/>
                                                                 <TextBlock Text="{Binding Name}" 
-                                                                          Style="{StaticResource whiteText}"
+                                                                          Style="{StaticResource WhiteText}"
                                                                           HorizontalAlignment="Center"/>
                                                             </StackPanel>
                                                         </CheckBox>
@@ -572,7 +571,7 @@
                             <TabItem Header="Elements">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <StackPanel Margin="10">
-                                        <TextBlock Text="Elements" Style="{StaticResource biggerWord}" Margin="0,0,0,10"/>
+                                        <TextBlock Text="Elements" Style="{StaticResource BiggerWord}" Margin="0,0,0,10"/>
 
                                         <!-- Elements Grid -->
                                         <ItemsControl x:Name="ElementsList">
@@ -605,28 +604,28 @@
                                VerticalAlignment="Top"
                                MinWidth="250">
                             <StackPanel>
-                                <TextBlock Text="Type:" Style="{StaticResource whiteText}"/>
+                                <TextBlock Text="Type:" Style="{StaticResource WhiteText}"/>
                                 <TextBlock x:Name="UpgradeText" 
-                                          Style="{StaticResource whiteText}"
+                                          Style="{StaticResource WhiteText}"
                                           Margin="0,0,0,10"/>
 
-                                <TextBlock Text="Effect:" Style="{StaticResource whiteText}"/>
+                                <TextBlock Text="Effect:" Style="{StaticResource WhiteText}"/>
                                 <TextBlock x:Name="UpgradeEffect" 
-                                          Style="{StaticResource whiteText}"
+                                          Style="{StaticResource WhiteText}"
                                           Margin="0,0,0,10"/>
 
-                                <TextBlock Text="Next:" Style="{StaticResource whiteText}"/>
+                                <TextBlock Text="Next:" Style="{StaticResource WhiteText}"/>
                                 <TextBlock x:Name="UpgradeCost" 
-                                          Style="{StaticResource whiteText}"/>
+                                          Style="{StaticResource WhiteText}"/>
 
                                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                                     <ToggleButton Content="Hover to create ON" 
-                                                 Style="{StaticResource specialToggle}"/>
+                                                 Style="{StaticResource SpecialToggle}"/>
                                     <Button Content="Create all" 
-                                           Style="{StaticResource hollowButton}"
+                                           Style="{StaticResource HollowButton}"
                                            Margin="10,0,0,0"/>
                                     <ToggleButton Content="Max create ON" 
-                                                 Style="{StaticResource specialToggle}"
+                                                 Style="{StaticResource SpecialToggle}"
                                                  Margin="10,0,0,0"/>
                                 </StackPanel>
                             </StackPanel>
@@ -654,7 +653,7 @@
                                Padding="10"
                                VerticalAlignment="Top">
                             <StackPanel>
-                                <TextBlock Text="Strangeness Info" Style="{StaticResource bigWord}"/>
+                                <TextBlock Text="Strangeness Info" Style="{StaticResource BigWord}"/>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -680,7 +679,7 @@
                                Padding="10"
                                VerticalAlignment="Top">
                             <StackPanel>
-                                <TextBlock Text="Inflation Info" Style="{StaticResource bigWord}"/>
+                                <TextBlock Text="Inflation Info" Style="{StaticResource BigWord}"/>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -698,55 +697,55 @@
                             <TabItem Header="Settings">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <StackPanel Margin="10">
-                                        <TextBlock Text="Options" Style="{StaticResource biggerWord}" Margin="0,0,0,10"/>
+                                        <TextBlock Text="Options" Style="{StaticResource BiggerWord}" Margin="0,0,0,10"/>
 
                                         <StackPanel>
-                                            <TextBlock Text="File name:" Style="{StaticResource whiteText}"/>
+                                            <TextBlock Text="File name:" Style="{StaticResource WhiteText}"/>
                                             <TextBox x:Name="SaveFileNameInput" 
                                                     Text="Fundamental.txt"
                                                     Margin="0,5,0,15"/>
 
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                                <TextBlock Text="Visual numbers update interval:" Style="{StaticResource whiteText}"/>
+                                                <TextBlock Text="Visual numbers update interval:" Style="{StaticResource WhiteText}"/>
                                                 <TextBox x:Name="NumbersInterval" 
                                                         Width="60" 
                                                         Text="100"
                                                         Margin="10,0,0,0"/>
-                                                <TextBlock Text="ms" Style="{StaticResource whiteText}" VerticalAlignment="Center"/>
+                                                <TextBlock Text="ms" Style="{StaticResource WhiteText}" VerticalAlignment="Center"/>
                                                 <Button Content="Pause" 
-                                                       Style="{StaticResource hollowButton}"
+                                                       Style="{StaticResource HollowButton}"
                                                        Margin="20,0,0,0"/>
                                             </StackPanel>
 
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                                <TextBlock Text="Visual update and events interval:" Style="{StaticResource whiteText}"/>
+                                                <TextBlock Text="Visual update and events interval:" Style="{StaticResource WhiteText}"/>
                                                 <TextBox x:Name="VisualInterval" 
                                                         Width="60" 
                                                         Text="500"
                                                         Margin="10,0,0,0"/>
-                                                <TextBlock Text="ms" Style="{StaticResource whiteText}" VerticalAlignment="Center"/>
+                                                <TextBlock Text="ms" Style="{StaticResource WhiteText}" VerticalAlignment="Center"/>
                                                 <Button Content="Events" 
-                                                       Style="{StaticResource hollowButton}"
+                                                       Style="{StaticResource HollowButton}"
                                                        Margin="20,0,0,0"/>
                                             </StackPanel>
 
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                                <TextBlock Text="Game autosave interval:" Style="{StaticResource whiteText}"/>
+                                                <TextBlock Text="Game autosave interval:" Style="{StaticResource WhiteText}"/>
                                                 <TextBox x:Name="AutoSaveInterval" 
                                                         Width="60" 
                                                         Text="60"
                                                         Margin="10,0,0,0"/>
-                                                <TextBlock Text="s" Style="{StaticResource whiteText}" VerticalAlignment="Center"/>
+                                                <TextBlock Text="s" Style="{StaticResource WhiteText}" VerticalAlignment="Center"/>
                                             </StackPanel>
 
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                                <TextBlock Text="Format type:" Style="{StaticResource whiteText}"/>
-                                                <TextBlock Text="point" Style="{StaticResource whiteText}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                                <TextBlock Text="Format type:" Style="{StaticResource WhiteText}"/>
+                                                <TextBlock Text="point" Style="{StaticResource WhiteText}" VerticalAlignment="Center" Margin="10,0,0,0"/>
                                                 <TextBox x:Name="DecimalPoint" 
                                                         Width="20" 
                                                         Text="."
                                                         Margin="5,0,0,0"/>
-                                                <TextBlock Text="separator" Style="{StaticResource whiteText}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                                <TextBlock Text="separator" Style="{StaticResource WhiteText}" VerticalAlignment="Center" Margin="10,0,0,0"/>
                                                 <TextBox x:Name="ThousandSeparator" 
                                                         Width="20" 
                                                         Text=","
@@ -754,41 +753,41 @@
                                             </StackPanel>
 
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                                <TextBlock Text="Font size:" Style="{StaticResource whiteText}"/>
+                                                <TextBlock Text="Font size:" Style="{StaticResource WhiteText}"/>
                                                 <TextBox x:Name="CustomFontSize" 
                                                         Width="60" 
                                                         Text="16"
                                                         Margin="10,0,0,0"/>
-                                                <TextBlock Text="px" Style="{StaticResource whiteText}" VerticalAlignment="Center"/>
+                                                <TextBlock Text="px" Style="{StaticResource WhiteText}" VerticalAlignment="Center"/>
                                             </StackPanel>
                                         </StackPanel>
 
                                         <GroupBox Header="Other automatization" Margin="0,20,0,0">
                                             <StackPanel>
                                                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                                                    <TextBlock Text="Strangeness" Style="{StaticResource whiteText}"/>
-                                                    <TextBlock Text="⟶" Style="{StaticResource whiteText}" Margin="10,0"/>
-                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource specialToggle}"/>
+                                                    <TextBlock Text="Strangeness" Style="{StaticResource WhiteText}"/>
+                                                    <TextBlock Text="⟶" Style="{StaticResource WhiteText}" Margin="10,0"/>
+                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource SpecialToggle}"/>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                                                    <TextBlock Text="Elements" Style="{StaticResource whiteText}"/>
-                                                    <TextBlock Text="⟶" Style="{StaticResource whiteText}" Margin="10,0"/>
-                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource specialToggle}"/>
+                                                    <TextBlock Text="Elements" Style="{StaticResource WhiteText}"/>
+                                                    <TextBlock Text="⟶" Style="{StaticResource WhiteText}" Margin="10,0"/>
+                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource SpecialToggle}"/>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                                                    <TextBlock Text="Upgrades" Style="{StaticResource whiteText}"/>
-                                                    <TextBlock Text="⟶" Style="{StaticResource whiteText}" Margin="10,0"/>
-                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource specialToggle}"/>
+                                                    <TextBlock Text="Upgrades" Style="{StaticResource WhiteText}"/>
+                                                    <TextBlock Text="⟶" Style="{StaticResource WhiteText}" Margin="10,0"/>
+                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource SpecialToggle}"/>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                                                    <TextBlock Text="Stage Researches" Style="{StaticResource whiteText}"/>
-                                                    <TextBlock Text="⟶" Style="{StaticResource whiteText}" Margin="10,0"/>
-                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource specialToggle}"/>
+                                                    <TextBlock Text="Stage Researches" Style="{StaticResource WhiteText}"/>
+                                                    <TextBlock Text="⟶" Style="{StaticResource WhiteText}" Margin="10,0"/>
+                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource SpecialToggle}"/>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                                                    <TextBlock Text="Special Researches" Style="{StaticResource whiteText}"/>
-                                                    <TextBlock Text="⟶" Style="{StaticResource whiteText}" Margin="10,0"/>
-                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource specialToggle}"/>
+                                                    <TextBlock Text="Special Researches" Style="{StaticResource WhiteText}"/>
+                                                    <TextBlock Text="⟶" Style="{StaticResource WhiteText}" Margin="10,0"/>
+                                                    <ToggleButton Content="Auto OFF" Style="{StaticResource SpecialToggle}"/>
                                                 </StackPanel>
                                             </StackPanel>
                                         </GroupBox>
@@ -797,16 +796,16 @@
                                             <StackPanel>
                                                 <Button x:Name="CurrentTheme" 
                                                        Content="Default" 
-                                                       Style="{StaticResource hollowButton}"
+                                                       Style="{StaticResource HollowButton}"
                                                        HorizontalAlignment="Left"/>
                                                 <WrapPanel Margin="0,10,0,0">
-                                                    <Button Content="Default" Style="{StaticResource hollowButton}"/>
-                                                    <Button Content="Microworld" Style="{StaticResource hollowButton}"/>
-                                                    <Button Content="Submerged" Style="{StaticResource hollowButton}"/>
-                                                    <Button Content="Accretion" Style="{StaticResource hollowButton}"/>
-                                                    <Button Content="Interstellar" Style="{StaticResource hollowButton}"/>
-                                                    <Button Content="Intergalactic" Style="{StaticResource hollowButton}"/>
-                                                    <Button Content="Abyss" Style="{StaticResource hollowButton}"/>
+                                                    <Button Content="Default" Style="{StaticResource HollowButton}"/>
+                                                    <Button Content="Microworld" Style="{StaticResource HollowButton}"/>
+                                                    <Button Content="Submerged" Style="{StaticResource HollowButton}"/>
+                                                    <Button Content="Accretion" Style="{StaticResource HollowButton}"/>
+                                                    <Button Content="Interstellar" Style="{StaticResource HollowButton}"/>
+                                                    <Button Content="Intergalactic" Style="{StaticResource HollowButton}"/>
+                                                    <Button Content="Abyss" Style="{StaticResource HollowButton}"/>
                                                 </WrapPanel>
                                             </StackPanel>
                                         </GroupBox>
@@ -817,9 +816,9 @@
                             <TabItem Header="Stats">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <StackPanel Margin="10">
-                                        <TextBlock Text="Statistics" Style="{StaticResource biggerWord}" Margin="0,0,0,10"/>
+                                        <TextBlock Text="Statistics" Style="{StaticResource BiggerWord}" Margin="0,0,0,10"/>
 
-                                        <TextBlock Style="{StaticResource whiteText}" TextWrapping="Wrap">
+                                        <TextBlock Style="{StaticResource WhiteText}" TextWrapping="Wrap">
                                             <Run>Started playing: </Run>
                                             <Run x:Name="FirstPlay">00.00.0000, 00:00:00</Run>
                                             <Run> (</Run>
@@ -829,7 +828,7 @@
                                         </TextBlock>
 
                                         <TextBlock x:Name="ExportStats" 
-                                                  Style="{StaticResource whiteText}"
+                                                  Style="{StaticResource WhiteText}"
                                                   TextWrapping="Wrap"
                                                   Margin="0,10,0,0"/>
 
@@ -843,14 +842,14 @@
                                                                Margin="0,5">
                                                             <StackPanel>
                                                                 <TextBlock Text="{Binding Name}" 
-                                                                          Style="{StaticResource bigWord}"/>
+                                                                          Style="{StaticResource BigWord}"/>
                                                                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                                                                    <TextBlock Text="This reset: " Style="{StaticResource whiteText}"/>
-                                                                    <TextBlock Text="{Binding ThisReset}" Style="{StaticResource whiteText}"/>
+                                                                    <TextBlock Text="This reset: " Style="{StaticResource WhiteText}"/>
+                                                                    <TextBlock Text="{Binding ThisReset}" Style="{StaticResource WhiteText}"/>
                                                                 </StackPanel>
                                                                 <StackPanel Orientation="Horizontal">
-                                                                    <TextBlock Text="Total: " Style="{StaticResource whiteText}"/>
-                                                                    <TextBlock Text="{Binding Total}" Style="{StaticResource whiteText}"/>
+                                                                    <TextBlock Text="Total: " Style="{StaticResource WhiteText}"/>
+                                                                    <TextBlock Text="{Binding Total}" Style="{StaticResource WhiteText}"/>
                                                                 </StackPanel>
                                                             </StackPanel>
                                                         </Border>
@@ -865,35 +864,35 @@
                             <TabItem Header="History">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <StackPanel Margin="10">
-                                        <TextBlock Text="History" Style="{StaticResource biggerWord}" Margin="0,0,0,10"/>
+                                        <TextBlock Text="History" Style="{StaticResource BiggerWord}" Margin="0,0,0,10"/>
 
                                         <GroupBox Header="End resets" Margin="0,0,0,10">
                                             <StackPanel>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="Save:" Style="{StaticResource whiteText}"/>
+                                                    <TextBlock Text="Save:" Style="{StaticResource WhiteText}"/>
                                                     <TextBox Width="50" Margin="5,0,20,0"/>
-                                                    <TextBlock Text="show:" Style="{StaticResource whiteText}"/>
+                                                    <TextBlock Text="show:" Style="{StaticResource WhiteText}"/>
                                                     <TextBox Width="50" Margin="5,0,0,0"/>
                                                 </StackPanel>
                                                 <ListBox x:Name="EndHistoryList" 
                                                         Height="200" 
                                                         Margin="0,10,0,0"/>
-                                                <TextBlock Text="Best reset: " Style="{StaticResource whiteText}"/>
+                                                <TextBlock Text="Best reset: " Style="{StaticResource WhiteText}"/>
                                             </StackPanel>
                                         </GroupBox>
 
                                         <GroupBox Header="Stage resets">
                                             <StackPanel>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="Save:" Style="{StaticResource whiteText}"/>
+                                                    <TextBlock Text="Save:" Style="{StaticResource WhiteText}"/>
                                                     <TextBox Width="50" Margin="5,0,20,0"/>
-                                                    <TextBlock Text="show:" Style="{StaticResource whiteText}"/>
+                                                    <TextBlock Text="show:" Style="{StaticResource WhiteText}"/>
                                                     <TextBox Width="50" Margin="5,0,0,0"/>
                                                 </StackPanel>
                                                 <ListBox x:Name="StageHistoryList" 
                                                         Height="200" 
                                                         Margin="0,10,0,0"/>
-                                                <TextBlock Text="Best reset: " Style="{StaticResource whiteText}"/>
+                                                <TextBlock Text="Best reset: " Style="{StaticResource WhiteText}"/>
                                             </StackPanel>
                                         </GroupBox>
                                     </StackPanel>
@@ -909,36 +908,36 @@
                                Padding="10"
                                VerticalAlignment="Top">
                             <StackPanel>
-                                <TextBlock Text="Save File" Style="{StaticResource bigWord}" Margin="0,0,0,10"/>
+                                <TextBlock Text="Save File" Style="{StaticResource BigWord}" Margin="0,0,0,10"/>
 
                                 <TextBlock Text="Please export save file regularly" 
-                                          Style="{StaticResource bigWord}"
+                                          Style="{StaticResource BigWord}"
                                           FontSize="16"
                                           Margin="0,0,0,5"/>
                                 <TextBlock x:Name="ExportReward" 
-                                          Style="{StaticResource whiteText}"
+                                          Style="{StaticResource WhiteText}"
                                           Margin="0,0,0,15"/>
 
                                 <StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                                         <Button Content="Save" 
-                                               Style="{StaticResource hollowButton}"
+                                               Style="{StaticResource HollowButton}"
                                                Width="100"/>
                                         <Button Content="Load" 
-                                               Style="{StaticResource hollowButton}"
+                                               Style="{StaticResource HollowButton}"
                                                Width="100"
                                                Margin="10,0,0,0"/>
                                     </StackPanel>
                                     <Button Content="Export save file" 
-                                           Style="{StaticResource hollowButton}"
+                                           Style="{StaticResource HollowButton}"
                                            HorizontalAlignment="Stretch"
                                            Margin="0,0,0,10"/>
                                     <Button Content="Advanced save options" 
-                                           Style="{StaticResource hollowButton}"
+                                           Style="{StaticResource HollowButton}"
                                            HorizontalAlignment="Stretch"/>
                                 </StackPanel>
 
-                                <TextBlock Style="{StaticResource whiteText}" Margin="0,15,0,0">
+                                <TextBlock Style="{StaticResource WhiteText}" Margin="0,15,0,0">
                                     <Run>Last time saved: </Run>
                                     <Run x:Name="IsSaved">Not in current session</Run>
                                 </TextBlock>
@@ -958,14 +957,14 @@
 
                 <!-- Shortcuts -->
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <Button Content="Exit" Style="{StaticResource hollowButton}"/>
-                    <Button Content="Missing" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
-                    <Button Content="Missing" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
-                    <Button Content="Stage" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
-                    <Button Content="End" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
-                    <Button Content="Upgrades" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
-                    <Button Content="Structures" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
-                    <Button Content="Shift" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Exit" Style="{StaticResource HollowButton}"/>
+                    <Button Content="Missing" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Missing" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Stage" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="End" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Upgrades" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Structures" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Shift" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
                 </StackPanel>
 
                 <!-- Footer Stats -->
@@ -1001,11 +1000,11 @@
 
                 <!-- Tabs Navigation -->
                 <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10">
-                    <Button Content="Stage" Style="{StaticResource hollowButton}"/>
-                    <Button Content="Upgrade" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
-                    <Button Content="Strangeness" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
-                    <Button Content="Inflation" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
-                    <Button Content="Settings" Style="{StaticResource hollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Stage" Style="{StaticResource HollowButton}"/>
+                    <Button Content="Upgrade" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Strangeness" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Inflation" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
+                    <Button Content="Settings" Style="{StaticResource HollowButton}" Margin="10,0,0,0"/>
                 </StackPanel>
             </Grid>
         </Grid>
