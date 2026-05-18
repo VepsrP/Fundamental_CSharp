@@ -214,7 +214,7 @@ namespace FundamentalLib.Classes
             return BigNumber.FormatBigDouble(this, format, null);
         }
 
-        public string ToString(string format, IFormatProvider formatProvider)
+        public string ToString(string? format, IFormatProvider? formatProvider)
         {
             return BigNumber.FormatBigDouble(this, format, formatProvider);
         }
@@ -457,7 +457,7 @@ namespace FundamentalLib.Classes
             return value.Subtract(1);
         }
 
-        public int CompareTo(object other)
+        public int CompareTo(object? other)
         {
             if (other == null)
             {
@@ -495,7 +495,7 @@ namespace FundamentalLib.Classes
                 : Mantissa.CompareTo(other.Mantissa);
         }
 
-        public override bool Equals(object other)
+        public override bool Equals(object? other)
         {
             return other is BigDouble && Equals((BigDouble)other);
         }
@@ -844,7 +844,7 @@ namespace FundamentalLib.Classes
         /// </summary>
         private static class BigNumber
         {
-            public static string FormatBigDouble(BigDouble value, string format, IFormatProvider formatProvider)
+            public static string FormatBigDouble(BigDouble value, string? format, IFormatProvider? formatProvider)
             {
                 if (IsNaN(value)) return "NaN";
                 if (value.Exponent >= ExpLimit)
@@ -867,7 +867,7 @@ namespace FundamentalLib.Classes
                 throw new FormatException($"Unknown string format '{formatSpecifier}'");
             }
 
-            private static char ParseFormatSpecifier(string format, out int digits)
+            private static char ParseFormatSpecifier(string? format, out int digits)
             {
                 const char customFormat = (char) 0;
                 digits = -1;
