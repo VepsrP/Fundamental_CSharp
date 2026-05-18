@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FundamentalLib\FundamentalLib.csproj" />
     <ProjectReference Include="..\ImageLibrary\ImageLibrary.csproj" />
   </ItemGroup>
 

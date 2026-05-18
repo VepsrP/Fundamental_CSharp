@@ -99,17 +99,17 @@
                          Visibility="Collapsed"/>
 
             <!-- Big Window Overlay -->
-            <Border x:Name="BigWindow" 
+            <!--<Border x:Name="BigWindow" 
                    Background="#80000000" 
                    Visibility="Collapsed"
                    Grid.RowSpan="2">
                 <Border BorderBrush="White" BorderThickness="2" Margin="100">
                     <ContentControl x:Name="BigWindowContent"/>
                 </Border>
-            </Border>
+            </Border>-->
 
             <!-- Alert Dialog -->
-            <Border x:Name="AlertMain" 
+            <!--<Border x:Name="AlertMain" 
                    Background="#80000000" 
                    Visibility="Collapsed"
                    Grid.RowSpan="2">
@@ -141,10 +141,10 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-            </Border>
+            </Border>-->
 
             <!-- Offline Calculation Dialog -->
-            <Border x:Name="OfflineMain" 
+            <!--<Border x:Name="OfflineMain" 
                    Background="#80000000" 
                    Visibility="Collapsed"
                    Grid.RowSpan="2">
@@ -183,16 +183,16 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-            </Border>
+            </Border>-->
 
             <!-- Notifications -->
-            <StackPanel x:Name="Notifications" 
+            <!--<StackPanel x:Name="Notifications" 
                        VerticalAlignment="Top" 
                        HorizontalAlignment="Right"
-                       Margin="10"/>
+                       Margin="10"/>-->
 
             <!-- Hover Window -->
-            <Border x:Name="HoverWindow" 
+            <!--<Border x:Name="HoverWindow" 
                    Background="#cc000000" 
                    Visibility="Collapsed"
                    HorizontalAlignment="Left" 
@@ -201,7 +201,7 @@
                    BorderBrush="White"
                    BorderThickness="1">
                 <TextBlock x:Name="HoverText" Style="{StaticResource WhiteText}"/>
-            </Border>
+            </Border>-->
 
             <!-- Main Body -->
             <TabControl x:Name="Body" Grid.Row="0" Margin="10">

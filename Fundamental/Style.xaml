@@ -101,7 +101,7 @@
     <SolidColorBrush x:Key="OrangeTextBrush" Color="{StaticResource OrangeTextColor}"/>
     <SolidColorBrush x:Key="GrayTextBrush" Color="{StaticResource GrayTextColor}"/>
     <SolidColorBrush x:Key="OrchidTextBrush" Color="{StaticResource OrchidTextColor}"/>
-    <SolidColorBrush x:Key="DarkOrchidTextBrush" Color="{StaticResource DarkorchidTextColor}"/>
+    <SolidColorBrush x:Key="DarkOrchidTextBrush" Color="{StaticResource DarkOrchidTextColor}"/>
     <SolidColorBrush x:Key="DarkVioletTextBrush" Color="{StaticResource DarkVioletTextColor}"/>
     <SolidColorBrush x:Key="BrownTextBrush" Color="{StaticResource BrownTextColor}"/>
     <SolidColorBrush x:Key="RedTextBrush" Color="{StaticResource RedTextColor}"/>
@@ -115,14 +115,16 @@
     <FontFamily x:Key="InterFont">pack://application:,,,/Fonts/Inter/#Inter</FontFamily>
     <FontFamily x:Key="TightFont">pack://application:,,,/Fonts/Inter/#Inter Tight</FontFamily>
     <FontFamily x:Key="DefaultFont">pack://application:,,,/Fonts/Inter/#Inter Tight, pack://application:,,,/Fonts/Inter/#Inter, Serif</FontFamily>
-    <Style x:Key="BaseStyle" TargetType="Control">
+    <Style x:Key="BaseStyle" TargetType="FrameworkElement">
         <Setter Property="Margin" Value="0"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    </Style>
+    <Style x:Key="ControlStyle" TargetType="Control" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Padding" Value="0"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
         <Setter Property="Foreground" Value="{StaticResource MainTextBrush}"/>
         <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
     </Style>
 
     <!-- Стиль по умолчанию для TextBlock -->
@@ -131,8 +133,7 @@
     </Style>
 
     <!-- Стиль по умолчанию для Label -->
-    <Style TargetType="Label" BasedOn="{StaticResource BaseStyle}">
-        <Setter Property="Foreground" Value="{StaticResource MainTextBrush}"/>
+    <Style TargetType="Label" BasedOn="{StaticResource ControlStyle}">
     </Style>
     <Style x:Key="StageText" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource StageTextBrush}"/>
@@ -195,20 +196,48 @@
     </Style>
 
     <!-- Также применяем стили к Label -->
-    <Style x:Key="StageTextLabel" TargetType="Label" BasedOn="{StaticResource StageText}"/>
-    <Style x:Key="MainTextLabel" TargetType="Label" BasedOn="{StaticResource MainText}"/>
-    <Style x:Key="WhiteTextLabel" TargetType="Label" BasedOn="{StaticResource WhiteText}"/>
-    <Style x:Key="CyanTextLabel" TargetType="Label" BasedOn="{StaticResource CyanText}"/>
-    <Style x:Key="BlueTextLabel" TargetType="Label" BasedOn="{StaticResource BlueText}"/>
-    <Style x:Key="OrangeTextLabel" TargetType="Label" BasedOn="{StaticResource OrangeText}"/>
-    <Style x:Key="GrayTextLabel" TargetType="Label" BasedOn="{StaticResource GrayText}"/>
-    <Style x:Key="OrchidTextLabel" TargetType="Label" BasedOn="{StaticResource OrchidText}"/>
-    <Style x:Key="DarkOrchidTextLabel" TargetType="Label" BasedOn="{StaticResource DarkOrchidText}"/>
-    <Style x:Key="DarkVioletTextLabel" TargetType="Label" BasedOn="{StaticResource DarkVioletText}"/>
-    <Style x:Key="BrownTextLabel" TargetType="Label" BasedOn="{StaticResource BrownText}"/>
-    <Style x:Key="RedTextLabel" TargetType="Label" BasedOn="{StaticResource RedText}"/>
-    <Style x:Key="GreenTextLabel" TargetType="Label" BasedOn="{StaticResource GreenText}"/>
-    <Style x:Key="YellowTextLabel" TargetType="Label" BasedOn="{StaticResource YellowText}"/>
+    <Style x:Key="StageTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource StageTextBrush}"/>
+    </Style>
+    <Style x:Key="MainTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource MainTextBrush}"/>
+    </Style>
+    <Style x:Key="WhiteTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource WhiteTextBrush}"/>
+    </Style>
+    <Style x:Key="CyanTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource CyanTextBrush}"/>
+    </Style>
+    <Style x:Key="BlueTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource BlueTextBrush}"/>
+    </Style>
+    <Style x:Key="OrangeTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource OrangeTextBrush}"/>
+    </Style>
+    <Style x:Key="GrayTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource GrayTextBrush}"/>
+    </Style>
+    <Style x:Key="OrchidTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource OrchidTextBrush}"/>
+    </Style>
+    <Style x:Key="DarkOrchidTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource DarkOrchidTextBrush}"/>
+    </Style>
+    <Style x:Key="DarkVioletTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource DarkVioletTextBrush}"/>
+    </Style>
+    <Style x:Key="BrownTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource BrownTextBrush}"/>
+    </Style>
+    <Style x:Key="RedTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource RedTextBrush}"/>
+    </Style>
+    <Style x:Key="GreenTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource GreenTextBrush}"/>
+    </Style>
+    <Style x:Key="YellowTextLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource YellowTextBrush}"/>
+    </Style>
 
     <!-- Размеры текста -->
     <Style x:Key="BigWord" TargetType="TextBlock">
