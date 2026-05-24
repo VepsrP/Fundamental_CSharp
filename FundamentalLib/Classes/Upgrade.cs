@@ -5,7 +5,7 @@ namespace FundamentalLib.Classes;
 
 public abstract class Upgrade(IUpgrade upgrade)
 {
-    public string Name { get; set; } = upgrade.Name;
+    public string Name { get; } = upgrade.Name;
     public bool Bought { get; set; } = upgrade.Bought;
     public Func<bool> Condition { get; } = upgrade.Condition;
     public Func<int> Power { get; } = upgrade.Power;

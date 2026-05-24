@@ -1,5 +1,7 @@
 ﻿using System.Windows;
+using FundamentalLib.Core;
 using Fundamental.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fundamental
 {
@@ -16,7 +18,8 @@ namespace Fundamental
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            // Регистрируем PlayerState как Singleton — один экземпляр на всё приложение
+            containerRegistry.RegisterSingleton<PlayerState>();
         }
     }
 
