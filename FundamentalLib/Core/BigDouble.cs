@@ -84,7 +84,7 @@ namespace FundamentalLib.Classes
 
         public static BigDouble Normalize(double mantissa, long exponent)
         {
-            if (mantissa >= 1 && mantissa < 10 || !IsFinite(mantissa))
+            if (mantissa is >= 1 and < 10 || !IsFinite(mantissa))
             {
                 return FromMantissaExponentNoNormalize(mantissa, exponent);
             }
@@ -200,8 +200,7 @@ namespace FundamentalLib.Classes
             }
 
             var resultrounded = Math.Round(result);
-            if (Math.Abs(resultrounded - result) < 1e-10) return resultrounded;
-            return result;
+            return Math.Abs(resultrounded - result) < 1e-10 ? resultrounded : result;
         }
 
         public override string ToString()

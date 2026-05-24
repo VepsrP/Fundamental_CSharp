@@ -1,8 +1,9 @@
 ﻿namespace FundamentalLib.Interfaces
 {
-    internal interface IResource
+    public interface IResource
     {
         string Name { get; }
         string Image { get; }
+        string Amount { get; set; }
     }
 }

@@ -7,5 +7,7 @@
         Dictionary<int, int> RankCosts { get; }
         Dictionary<int, string> RankImages { get; }
         Dictionary<int, string> RankNames { get; }
+
+        IResource Resource { get; }
     }
 }
