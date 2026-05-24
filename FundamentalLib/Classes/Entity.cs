@@ -1,4 +1,6 @@
-﻿namespace FundamentalLib.Classes
+﻿using FundamentalLib.Core;
+
+namespace FundamentalLib.Classes
 {
     public abstract class Entity(BigDouble amount, string name, string image)
     {

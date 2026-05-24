@@ -8,7 +8,7 @@ using Random = System.Random;
 using UnityEngine;
 #endif
 
-namespace FundamentalLib.Classes
+namespace FundamentalLib.Core
 {
 #if UNITY_2017_1_OR_NEWER
     [Serializable]

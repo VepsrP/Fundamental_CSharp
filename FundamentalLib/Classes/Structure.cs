@@ -1,4 +1,5 @@
-﻿using FundamentalLib.Interfaces;
+﻿using FundamentalLib.Core;
+using FundamentalLib.Interfaces;
 
 namespace FundamentalLib.Classes;
 
