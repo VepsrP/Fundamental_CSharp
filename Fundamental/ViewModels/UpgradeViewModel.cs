@@ -27,6 +27,7 @@ namespace Fundamental.ViewModels
             _id = id;
             _playerState = playerState;
             BuyCommand = new DelegateCommand(ExecuteBuy, CanExecuteBuy);
+            ResetCommand = new DelegateCommand(ExecuteReset, CanExecuteReset);
         }
 
         #region Properties
@@ -63,6 +64,7 @@ namespace Fundamental.ViewModels
         #region Commands
 
         public ICommand BuyCommand { get; }
+        public ICommand ResetCommand { get; }
 
         private void ExecuteBuy()
         {
@@ -71,6 +73,17 @@ namespace Fundamental.ViewModels
         }
 
         private bool CanExecuteBuy() => Model.IsCanBuy();
+
+        private void ExecuteReset()
+        {
+            Model.Reset();
+            RefreshProperties();
+        }
+
+        private bool CanExecuteReset()
+        {
+            return true;
+        }
 
         #endregion
 

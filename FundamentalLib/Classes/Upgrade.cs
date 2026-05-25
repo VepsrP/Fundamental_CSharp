@@ -27,4 +27,9 @@ public abstract class Upgrade(IUpgrade upgrade)
             Bought = true;
         }
     }
+
+    public void Reset()
+    {
+        Bought = false;
+    }
 }
