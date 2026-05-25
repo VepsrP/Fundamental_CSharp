@@ -1,26 +1,45 @@
 ﻿using System.Windows;
-using FundamentalLib.Core;
+using Fundamental.Core;
+using Fundamental.ViewModels;
 using Fundamental.Views;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Fundamental
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : PrismApplication
+    public partial class App
     {
-        protected override Window CreateShell()
+        private static IHost? _host;
+
+        protected override void OnStartup(StartupEventArgs e)
         {
-            var w = Container.Resolve<MainWindow>();
-            return w;
+            base.OnStartup(e);
+
+            _host = Host.CreateDefaultBuilder()
+                .ConfigureServices(ConfigureServices)
+                .Build();
+
+            var mainWindow = _host.Services.GetRequiredService<MainWindow>();
+            mainWindow.Show();
         }
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        protected override void OnExit(ExitEventArgs e)
         {
-            // Регистрируем PlayerState как Singleton — один экземпляр на всё приложение
-            containerRegistry.RegisterSingleton<PlayerState>();
+            _host?.Dispose();
+            base.OnExit(e);
+        }
+
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            // Core
+            services.AddSingleton<PlayerState>();
+
+            // Views + ViewModels
+            services.AddSingleton<MainWindowViewModel>();
+            services.AddSingleton<MainWindow>();
         }
     }
-
 }

@@ -1,105 +1,129 @@
-using System.ComponentModel;
-using System.Windows.Input;
-using FundamentalLib.Classes;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using FundamentalLib.Core;
-using Prism.Commands;
-using Prism.Mvvm;
+using FundamentalLib.Interfaces;
 
 namespace Fundamental.ViewModels
 {
     /// <summary>
-    /// ViewModel для отображения и взаимодействия с Upgrade (Model)
+    /// ViewModel для улучшения (объединённая модель + ViewModel с CommunityToolkit.Mvvm)
     /// </summary>
-    public class UpgradeViewModel : BindableBase
+    public partial class UpgradeViewModel : ObservableObject
     {
-        private readonly PlayerState _playerState;
-        private readonly int _stage;
-        private readonly int _id;
-
-        /// <summary>
-        /// Модель извлекается из PlayerState по индексу
-        /// </summary>
-        private Upgrade Model => _playerState.Upgrades[_stage][_id];
-
-        public UpgradeViewModel(int stage, int id, PlayerState playerState)
+        public UpgradeViewModel(IUpgrade upgrade)
         {
-            _stage = stage;
-            _id = id;
-            _playerState = playerState;
-            BuyCommand = new DelegateCommand(ExecuteBuy, CanExecuteBuy);
-            ResetCommand = new DelegateCommand(ExecuteReset, CanExecuteReset);
+            Name = upgrade.Name;
+            _bought = upgrade.Bought;
+            Color = upgrade.Color;
+            Condition = upgrade.Condition;
+            Power = upgrade.Power;
+            Effect = upgrade.Effect;
+            Cost = upgrade.Cost;
+            Resource = upgrade.Resource;
+            Image = upgrade.Image;
         }
 
-        #region Properties
+        #region Static Properties (не изменяются после инициализации)
 
         /// <summary>Название улучшения</summary>
-        public string Name => Model.Name;
+        public string Name { get; }
 
         /// <summary>Изображение улучшения</summary>
-        public string Image => Model.Image;
+        public string Image { get; }
 
-        /// <summary>Куплено ли улучшение</summary>
-        public bool Bought => Model.Bought;
+        /// <summary>Цвет</summary>
+        public string Color { get; }
+
+        /// <summary>Условие доступности</summary>
+        public Func<bool> Condition { get; }
+
+        /// <summary>Мощность</summary>
+        public Func<int> Power { get; }
+
+        /// <summary>Эффект</summary>
+        public Func<string> Effect { get; }
+
+        /// <summary>Стоимость</summary>
+        public Func<BigDouble> Cost { get; }
+
+        /// <summary>Целевой ресурс</summary>
+        public IResourceTarget Resource { get; }
+
+        #endregion
+
+        #region Observable Properties
+
+        [ObservableProperty]
+        private bool _bought;
+
+        #endregion
+
+        #region Computed Properties
 
         /// <summary>Можно ли купить</summary>
-        public bool CanBuy => Model.IsCanBuy();
+        public bool CanBuy => IsCanBuy();
 
         /// <summary>Отображение стоимости</summary>
-        public string CostDisplay => $"{Model.Cost()} {Model.Resource.Name}";
+        public string CostDisplay => $"{Cost()} {Resource.Name}";
 
         /// <summary>Отображение эффекта</summary>
-        public string EffectDisplay => Model.Effect();
+        public string EffectDisplay => Effect();
 
         /// <summary>Отображение мощности</summary>
-        public string PowerDisplay => $"{Model.Power()}";
+        public string PowerDisplay => $"{Power()}";
 
         /// <summary>Название ресурса</summary>
-        public string ResourceName => Model.Resource.Name;
+        public string ResourceName => Resource.Name;
 
         /// <summary>Текущее количество ресурса</summary>
-        public BigDouble ResourceAmount => Model.Resource.Amount;
+        public BigDouble ResourceAmount => Resource.Amount;
 
         #endregion
 
         #region Commands
 
-        public ICommand BuyCommand { get; }
-        public ICommand ResetCommand { get; }
-
-        private void ExecuteBuy()
+        [RelayCommand(CanExecute = nameof(IsCanBuy))]
+        private void Buy()
         {
-            Model.Buy();
-            RefreshProperties();
+            Resource.Decrease(Cost());
+            Bought = true;
+            OnBoughtChanged();
         }
 
-        private bool CanExecuteBuy() => Model.IsCanBuy();
-
-        private void ExecuteReset()
+        [RelayCommand]
+        private void Reset()
         {
-            Model.Reset();
-            RefreshProperties();
-        }
-
-        private bool CanExecuteReset()
-        {
-            return true;
+            Bought = false;
+            OnBoughtChanged();
         }
 
         #endregion
 
-        #region Methods
+        #region Helper Methods
 
-        /// <summary>Обновляет все свойства для UI</summary>
+        private bool IsCanBuy()
+        {
+            return Resource.Amount >= Cost() && !Bought;
+        }
+
+        /// <summary>Вызывает PropertyChanged для всех зависимых свойств при изменении Bought</summary>
+        private void OnBoughtChanged()
+        {
+            OnPropertyChanged(nameof(Bought));
+            OnPropertyChanged(nameof(CanBuy));
+            OnPropertyChanged(nameof(CostDisplay));
+            OnPropertyChanged(nameof(EffectDisplay));
+            OnPropertyChanged(nameof(ResourceAmount));
+            BuyCommand.NotifyCanExecuteChanged();
+        }
+
+        /// <summary>Обновляет все свойства для UI (вызывается извне при изменении ресурсов)</summary>
         public void RefreshProperties()
         {
-            OnPropertyChanged(new PropertyChangedEventArgs(nameof(Bought)));
-            OnPropertyChanged(new PropertyChangedEventArgs(nameof(CanBuy)));
-            OnPropertyChanged(new PropertyChangedEventArgs(nameof(CostDisplay)));
-            OnPropertyChanged(new PropertyChangedEventArgs(nameof(EffectDisplay)));
-            OnPropertyChanged(new PropertyChangedEventArgs(nameof(ResourceAmount)));
-
-            // Обновляем состояние команды
-            (BuyCommand as DelegateCommand)?.RaiseCanExecuteChanged();
+            OnPropertyChanged(nameof(CanBuy));
+            OnPropertyChanged(nameof(CostDisplay));
+            OnPropertyChanged(nameof(ResourceAmount));
+            BuyCommand.NotifyCanExecuteChanged();
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Fundamental.ViewModels;
 
 namespace Fundamental.Views
 {
@@ -7,8 +8,9 @@ namespace Fundamental.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(MainWindowViewModel vm)
         {
+            DataContext = vm;
             InitializeComponent();
         }
     }

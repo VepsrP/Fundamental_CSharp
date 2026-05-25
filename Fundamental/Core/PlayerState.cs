@@ -1,7 +1,8 @@
-using System.Collections.ObjectModel;
 using FundamentalLib.Classes;
+using FundamentalLib.Core;
+using Fundamental.ViewModels;
 
-namespace FundamentalLib.Core
+namespace Fundamental.Core
 {
     /// <summary>
     /// Единый контейнер состояния игрока. Зарегистрирован как Singleton через DI.
@@ -17,11 +18,11 @@ namespace FundamentalLib.Core
 
         #region Collections
 
-        /// <summary>Улучшения по стадиям: Stage -> [ID -> Upgrade]</summary>
-        public Dictionary<int, Dictionary<int, Upgrade>> Upgrades { get; } = new();
+        /// <summary>Улучшения по стадиям: Stage -> [ID -> UpgradeViewModel]</summary>
+        public Dictionary<int, Dictionary<int, UpgradeViewModel>> Upgrades { get; } = [];
 
         /// <summary>Строения по стадиям: Stage -> [ID -> Structure]</summary>
-        public Dictionary<int, Dictionary<int, Structure>> Buildings { get; } = new();
+        public Dictionary<int, Dictionary<int, Structure>> Buildings { get; } = [];
 
         #endregion
 

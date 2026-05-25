@@ -1,32 +1,52 @@
 ﻿using System.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Fundamental.Core;
+using FundamentalLib.Classes;
 
 namespace Fundamental.ViewModels
 {
-    internal class MainWindowViewModel : BindableBase
+    public partial class MainWindowViewModel : ObservableObject
     {
-        #region Title : string - Заголовок окна
+        private readonly PlayerState _playerState;
+
+        public MainWindowViewModel(PlayerState playerState)
+        {
+            _playerState = playerState;
+            InitializeUpgrades();
+        }
+
+        #region Title
 
         /// <summary>Заголовок окна</summary>
-        private readonly string _title = "Fundamental";
-
-        /// <summary>Заголовок окна</summary>
-        public string Title => _title;
+        public string Title => "Fundamental";
 
         #endregion
 
-        #region LoadingPanelVisible : bool - Определение отображения панели
+        #region Loading / Content Visibility
 
-        /// <summary>Определение отображения панели</summary>
+        [ObservableProperty]
+        private Visibility _loadingPanelVisible = Visibility.Collapsed;
 
-        /// <summary>Заголовок окна</summary>
-        public Visibility LoadingPanelVisible { get; set; } = Visibility.Collapsed;
+        [ObservableProperty]
+        private Visibility _mainContent = Visibility.Visible;
 
         #endregion
 
-        #region MainContent : Visibility - Определение отображения главного контента
+        #region PlayerState Access
 
-        /// <summary>Определение отображения главного контента</summary>
-        public Visibility MainContent { get; set; } = Visibility.Collapsed;
+        public PlayerState PlayerState => _playerState;
+
+        #endregion
+
+        #region Initialize Upgrades
+
+        private void InitializeUpgrades()
+        {
+            // Пример инициализации улучшений
+            // Здесь должна быть логика создания UpgradeViewModel из IUpgrade
+            // _playerState.Upgrades[stage][id] = new UpgradeViewModel(upgrade);
+        }
 
         #endregion
     }
