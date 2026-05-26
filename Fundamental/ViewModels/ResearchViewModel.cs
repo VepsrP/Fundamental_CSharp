@@ -9,7 +9,6 @@ namespace Fundamental.ViewModels
     {
         #region Static Properties (не изменяются после инициализации)
         public string Name { get; } = research.Name;
-        public int Amount { get; set; } = research.Amount;
         public Func<int> MaxAmount { get; } = research.MaxAmount;
         public string Color { get; } = research.Color;
         public Func<bool> Condition { get; } = research.Condition;
@@ -19,6 +18,11 @@ namespace Fundamental.ViewModels
         public Func<double> CostScaling { get; } = research.CostScaling;
         public IResourceTarget Resource { get; } = research.Resource;
         public string Image { get; } = research.Image;
+        #endregion
+
+        #region Mutable Properties
+        /// <summary>Текущее количество купленных уровней — изменяется при покупке</summary>
+        public int Amount { get; set; } = research.Amount;
         #endregion
 
         #region Computed Properties
@@ -37,13 +41,10 @@ namespace Fundamental.ViewModels
         /// <summary>Название ресурса</summary>
         public string ResourceName => Resource.Name;
 
-        /// <summary>Текущее количество ресурса</summary>
-        public BigDouble ResourceAmount => Resource.Amount;
-
         /// <summary>Текущее количество купленых уровней разработки</summary>
         public string AmountDisplay => $"{Amount}";
 
-        /// <summary>Максимальное оличество доступных уровней разработки</summary>
+        /// <summary>Максимальное количество доступных уровней разработки</summary>
         public string MaxAmountDisplay => $"{MaxAmount}";
 
         #endregion
@@ -53,6 +54,7 @@ namespace Fundamental.ViewModels
         [RelayCommand(CanExecute = nameof(IsCanBuy))]
         private void Buy()
         {
+            if (!IsCanBuy()) return;
             Resource.Decrease(BaseCost() * Math.Pow(CostScaling(), Amount));
             OnBoughtChanged();
         }
@@ -80,7 +82,6 @@ namespace Fundamental.ViewModels
             OnPropertyChanged(nameof(CanBuy));
             OnPropertyChanged(nameof(CostDisplay));
             OnPropertyChanged(nameof(EffectDisplay));
-            OnPropertyChanged(nameof(ResourceAmount));
             BuyCommand.NotifyCanExecuteChanged();
         }
 
@@ -89,7 +90,8 @@ namespace Fundamental.ViewModels
         {
             OnPropertyChanged(nameof(CanBuy));
             OnPropertyChanged(nameof(CostDisplay));
-            OnPropertyChanged(nameof(ResourceAmount));
+            OnPropertyChanged(nameof(EffectDisplay));
+            OnPropertyChanged(nameof(PowerDisplay));
             BuyCommand.NotifyCanExecuteChanged();
         }
 

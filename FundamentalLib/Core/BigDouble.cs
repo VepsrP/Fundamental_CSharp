@@ -82,6 +82,12 @@ namespace FundamentalLib.Core
             }
         }
 
+        /// <summary>
+        /// Нормализует значение: приводит мантиссу к диапазону [1, 10) и корректирует экспоненту.
+        /// </summary>
+        /// <param name="mantissa">Мантисса</param>
+        /// <param name="exponent">Экспонента</param>
+        /// <returns>Нормализованный BigDouble</returns>
         public static BigDouble Normalize(double mantissa, long exponent)
         {
             if (mantissa is >= 1 and < 10 || !IsFinite(mantissa))
@@ -107,45 +113,64 @@ namespace FundamentalLib.Core
             return FromMantissaExponentNoNormalize(mantissa, exponent + tempExponent);
         }
 
+        /// <summary>Мантисса числа (значимая часть, диапазон [1, 10))</summary>
         public double Mantissa => _mantissa;
 
+        /// <summary>Экспонента числа (степень десятки)</summary>
         public long Exponent => _exponent;
 
+        /// <summary>
+        /// Создаёт BigDouble из мантиссы и экспоненты без нормализации (для внутреннего использования).
+        /// </summary>
         public static BigDouble FromMantissaExponentNoNormalize(double mantissa, long exponent)
         {
             return new BigDouble(mantissa, exponent, new PrivateConstructorArg());
         }
 
+        /// <summary>Нулевое значение (0)</summary>
         public static BigDouble Zero = FromMantissaExponentNoNormalize(0, 0);
 
+        /// <summary>Единица (1)</summary>
         public static BigDouble One = FromMantissaExponentNoNormalize(1, 0);
 
+        /// <summary>Не число (NaN)</summary>
         public static BigDouble NaN = FromMantissaExponentNoNormalize(double.NaN, long.MinValue);
 
+        /// <summary>Проверяет, является ли значение NaN</summary>
         public static bool IsNaN(BigDouble value)
         {
             return double.IsNaN(value.Mantissa);
         }
 
+        /// <summary>Положительная бесконечность (+∞)</summary>
         public static BigDouble PositiveInfinity = FromMantissaExponentNoNormalize(double.PositiveInfinity, 0);
 
+        /// <summary>Проверяет, является ли значение положительной бесконечностью</summary>
         public static bool IsPositiveInfinity(BigDouble value)
         {
             return double.IsPositiveInfinity(value.Mantissa);
         }
 
+        /// <summary>Отрицательная бесконечность (-∞)</summary>
         public static BigDouble NegativeInfinity = FromMantissaExponentNoNormalize(double.NegativeInfinity, 0);
 
+        /// <summary>Проверяет, является ли значение отрицательной бесконечностью</summary>
         public static bool IsNegativeInfinity(BigDouble value)
         {
             return double.IsNegativeInfinity(value.Mantissa);
         }
 
+        /// <summary>Проверяет, является ли значение бесконечностью (положительной или отрицательной)</summary>
         public static bool IsInfinity(BigDouble value)
         {
             return double.IsInfinity(value.Mantissa);
         }
 
+        /// <summary>
+        /// Парсит BigDouble из строки (поддерживает формат "1e10", "NaN", обычные числа).
+        /// </summary>
+        /// <param name="value">Строка для парсинга</param>
+        /// <returns>Распарсенный BigDouble</returns>
         public static BigDouble Parse(string value)
         {
             if (value.IndexOf('e') != -1)
@@ -170,6 +195,10 @@ namespace FundamentalLib.Core
             return result;
         }
 
+        /// <summary>
+        /// Преобразует BigDouble в обычный double (с потерей точности для очень больших/малых значений).
+        /// </summary>
+        /// <returns>Значение double</returns>
         public double ToDouble()
         {
             if (IsNaN(this))
@@ -203,36 +232,60 @@ namespace FundamentalLib.Core
             return Math.Abs(resultrounded - result) < 1e-10 ? resultrounded : result;
         }
 
+        /// <summary>
+        /// Возвращает строковое представление числа в общем формате.
+        /// </summary>
         public override string ToString()
         {
             return BigNumber.FormatBigDouble(this, null, null);
         }
 
+        /// <summary>
+        /// Возвращает строковое представление числа с указанным форматом.
+        /// </summary>
+        /// <param name="format">Строка формата (R, G, E, F)</param>
         public string ToString(string format)
         {
             return BigNumber.FormatBigDouble(this, format, null);
         }
 
+        /// <summary>
+        /// Возвращает строковое представление числа с форматом и провайдером.
+        /// </summary>
+        /// <param name="format">Строка формата</param>
+        /// <param name="formatProvider">Провайдер формата</param>
         public string ToString(string? format, IFormatProvider? formatProvider)
         {
             return BigNumber.FormatBigDouble(this, format, formatProvider);
         }
 
+        /// <summary>
+        /// Возвращает абсолютное значение (модуль).
+        /// </summary>
         public static BigDouble Abs(BigDouble value)
         {
             return FromMantissaExponentNoNormalize(Math.Abs(value.Mantissa), value.Exponent);
         }
 
+        /// <summary>
+        /// Меняет знак числа на противоположный.
+        /// </summary>
         public static BigDouble Negate(BigDouble value)
         {
             return FromMantissaExponentNoNormalize(-value.Mantissa, value.Exponent);
         }
 
+        /// <summary>
+        /// Возвращает знак числа: -1 (отрицательное), 0 (ноль), 1 (положительное).
+        /// </summary>
         public static int Sign(BigDouble value)
         {
             return Math.Sign(value.Mantissa);
         }
 
+        /// <summary>
+        /// Округляет до ближайшего целого числа.
+        /// </summary>
         public static BigDouble Round(BigDouble value)
         {
             if (IsNaN(value))
@@ -253,6 +306,11 @@ namespace FundamentalLib.Core
             return value;
         }
 
+        /// <summary>
+        /// Округляет до ближайшего целого числа с указанием режима округления.
+        /// </summary>
+        /// <param name="value">Значение для округления</param>
+        /// <param name="mode">Режим округления</param>
         public static BigDouble Round(BigDouble value, MidpointRounding mode)
         {
             if (IsNaN(value))
@@ -273,6 +331,9 @@ namespace FundamentalLib.Core
             return value;
         }
 
+        /// <summary>
+        /// Округляет вниз (к ближайшему целому, которое меньше или равно).
+        /// </summary>
         public static BigDouble Floor(BigDouble value)
         {
             if (IsNaN(value))
@@ -293,6 +354,9 @@ namespace FundamentalLib.Core
             return value;
         }
 
+        /// <summary>
+        /// Округляет вверх (к ближайшему целому, которое больше или равно).
+        /// </summary>
         public static BigDouble Ceiling(BigDouble value)
         {
             if (IsNaN(value))
@@ -313,6 +377,9 @@ namespace FundamentalLib.Core
             return value;
         }
 
+        /// <summary>
+        /// Отбрасывает дробную часть (округление к нулю).
+        /// </summary>
         public static BigDouble Truncate(BigDouble value)
         {
             if (IsNaN(value))
@@ -333,6 +400,9 @@ namespace FundamentalLib.Core
             return value;
         }
 
+        /// <summary>
+        /// Складывает два числа.
+        /// </summary>
         public static BigDouble Add(BigDouble left, BigDouble right)
         {
             //figure out which is bigger, shrink the mantissa of the smaller by the difference in exponents, add mantissas, normalize and return
@@ -380,22 +450,34 @@ namespace FundamentalLib.Core
                 bigger.Exponent - 14);
         }
 
+        /// <summary>
+        /// Вычитает правое число из левого.
+        /// </summary>
         public static BigDouble Subtract(BigDouble left, BigDouble right)
         {
             return left + -right;
         }
 
+        /// <summary>
+        /// Умножает два числа.
+        /// </summary>
         public static BigDouble Multiply(BigDouble left, BigDouble right)
         {
             // 2e3 * 4e5 = (2 * 4)e(3 + 5)
             return Normalize(left.Mantissa * right.Mantissa, left.Exponent + right.Exponent);
         }
 
+        /// <summary>
+        /// Делит левое число на правое.
+        /// </summary>
         public static BigDouble Divide(BigDouble left, BigDouble right)
         {
             return left * Reciprocate(right);
         }
 
+        /// <summary>
+        /// Возвращает обратное значение (1/value).
+        /// </summary>
         public static BigDouble Reciprocate(BigDouble value)
         {
             return Normalize(1.0 / value.Mantissa, -value.Exponent);
@@ -456,6 +538,9 @@ namespace FundamentalLib.Core
             return value.Subtract(1);
         }
 
+        /// <summary>
+        /// Сравнивает текущий объект с другим объектом.
+        /// </summary>
         public int CompareTo(object? other)
         {
             if (other == null)
@@ -469,6 +554,9 @@ namespace FundamentalLib.Core
             throw new ArgumentException("The parameter must be a BigDouble.");
         }
 
+        /// <summary>
+        /// Сравнивает два BigDouble: возвращает -1, 0 или 1.
+        /// </summary>
         public int CompareTo(BigDouble other)
         {
             if (
@@ -494,11 +582,17 @@ namespace FundamentalLib.Core
                 : Mantissa.CompareTo(other.Mantissa);
         }
 
+        /// <summary>
+        /// Проверяет равенство двух BigDouble.
+        /// </summary>
         public override bool Equals(object? other)
         {
             return other is BigDouble && Equals((BigDouble)other);
         }
 
+        /// <summary>
+        /// Возвращает хэш-код для объекта.
+        /// </summary>
         public override int GetHashCode()
         {
             unchecked
@@ -507,6 +601,9 @@ namespace FundamentalLib.Core
             }
         }
 
+        /// <summary>
+        /// Проверяет равенство двух BigDouble с учётом допуска.
+        /// </summary>
         public bool Equals(BigDouble other)
         {
             return !IsNaN(this) && !IsNaN(other) && (AreSameInfinity(this, other)
@@ -514,12 +611,14 @@ namespace FundamentalLib.Core
         }
 
         /// <summary>
-        /// Relative comparison with tolerance being adjusted with greatest exponent.
+        /// Относительное сравнение с допуском, адаптированным под наибольшую экспоненту.
         /// <para>
-        /// For example, if you put in 1e-9, then any number closer to the larger number
-        /// than (larger number) * 1e-9 will be considered equal.
+        /// Например, если допуск 1e-9, то любое число, ближайшее к большему числу
+        /// в пределах (большее число) * 1e-9, считается равным.
         /// </para>
         /// </summary>
+        /// <param name="other">Другое значение</param>
+        /// <param name="tolerance">Допуск</param>
         public bool Equals(BigDouble other, double tolerance)
         {
             return !IsNaN(this) && !IsNaN(other) && (AreSameInfinity(this, other)
@@ -532,16 +631,25 @@ namespace FundamentalLib.Core
                 || IsNegativeInfinity(first) && IsNegativeInfinity(second);
         }
 
+        /// <summary>
+        /// Оператор равенства (==).
+        /// </summary>
         public static bool operator ==(BigDouble left, BigDouble right)
         {
             return left.Equals(right);
         }
 
+        /// <summary>
+        /// Оператор неравенства (!=).
+        /// </summary>
         public static bool operator !=(BigDouble left, BigDouble right)
         {
             return !(left == right);
         }
 
+        /// <summary>
+        /// Оператор «меньше» (<).
+        /// </summary>
         public static bool operator <(BigDouble a, BigDouble b)
         {
             if (IsNaN(a) || IsNaN(b))
@@ -555,6 +663,9 @@ namespace FundamentalLib.Core
             return b.Mantissa > 0 || a.Exponent > b.Exponent;
         }
 
+        /// <summary>
+        /// Оператор «меньше или равно» (<=).
+        /// </summary>
         public static bool operator <=(BigDouble a, BigDouble b)
         {
             if (IsNaN(a) || IsNaN(b))
@@ -565,6 +676,9 @@ namespace FundamentalLib.Core
             return !(a > b);
         }
 
+        /// <summary>
+        /// Оператор «больше» (>).
+        /// </summary>
         public static bool operator >(BigDouble a, BigDouble b)
         {
             if (IsNaN(a) || IsNaN(b))
@@ -578,6 +692,9 @@ namespace FundamentalLib.Core
             return b.Mantissa < 0 && a.Exponent < b.Exponent;
         }
 
+        /// <summary>
+        /// Оператор «больше или равно» (>=).
+        /// </summary>
         public static bool operator >=(BigDouble a, BigDouble b)
         {
             if (IsNaN(a) || IsNaN(b))
@@ -588,6 +705,9 @@ namespace FundamentalLib.Core
             return !(a < b);
         }
 
+        /// <summary>
+        /// Возвращает большее из двух значений.
+        /// </summary>
         public static BigDouble Max(BigDouble left, BigDouble right)
         {
             if (IsNaN(left) || IsNaN(right))
@@ -597,6 +717,9 @@ namespace FundamentalLib.Core
             return left > right ? left : right;
         }
 
+        /// <summary>
+        /// Возвращает меньшее из двух значений.
+        /// </summary>
         public static BigDouble Min(BigDouble left, BigDouble right)
         {
             if (IsNaN(left) || IsNaN(right))
@@ -606,21 +729,33 @@ namespace FundamentalLib.Core
             return left > right ? right : left;
         }
 
+        /// <summary>
+        /// Возвращает абсолютный логарифм по основанию 10 (|log10(value)|).
+        /// </summary>
         public static double AbsLog10(BigDouble value)
         {
             return value.Exponent + Math.Log10(Math.Abs(value.Mantissa));
         }
 
+        /// <summary>
+        /// Возвращает логарифм по основанию 10.
+        /// </summary>
         public static double Log10(BigDouble value)
         {
             return value.Exponent + Math.Log10(value.Mantissa);
         }
 
+        /// <summary>
+        /// Возвращает логарифм по указанному основанию (BigDouble).
+        /// </summary>
         public static double Log(BigDouble value, BigDouble @base)
         {
             return Log(value, @base.ToDouble());
         }
 
+        /// <summary>
+        /// Возвращает логарифм по указанному основанию (double).
+        /// </summary>
         public static double Log(BigDouble value, double @base)
         {
             if (IsZero(@base))
@@ -632,16 +767,25 @@ namespace FundamentalLib.Core
             return 2.30258509299404568402 / Math.Log(@base) * Log10(value);
         }
 
+        /// <summary>
+        /// Возвращает логарифм по основанию 2.
+        /// </summary>
         public static double Log2(BigDouble value)
         {
             return 3.32192809488736234787 * Log10(value);
         }
 
+        /// <summary>
+        /// Возвращает натуральный логарифм (по основанию e).
+        /// </summary>
         public static double Ln(BigDouble value)
         {
             return 2.30258509299404568402 * Log10(value);
         }
 
+        /// <summary>
+        /// Возвращает 10 в указанной степени.
+        /// </summary>
         public static BigDouble Pow10(double power)
         {
             return IsInteger(power)
@@ -649,16 +793,25 @@ namespace FundamentalLib.Core
                 : Normalize(Math.Pow(10, power % 1), (long) Math.Truncate(power));
         }
 
+        /// <summary>
+        /// Возвращает 10 в целой степени.
+        /// </summary>
         public static BigDouble Pow10(long power)
         {
             return FromMantissaExponentNoNormalize(1, power);
         }
 
+        /// <summary>
+        /// Возводит число в степень (BigDouble).
+        /// </summary>
         public static BigDouble Pow(BigDouble value, BigDouble power)
         {
             return Pow(value, power.ToDouble());
         }
 
+        /// <summary>
+        /// Возводит число в целую степень.
+        /// </summary>
         public static BigDouble Pow(BigDouble value, long power)
         {
             if (Is10(value))
@@ -677,6 +830,9 @@ namespace FundamentalLib.Core
             return Normalize(mantissa, value.Exponent * power);
         }
 
+        /// <summary>
+        /// Возводит число в степень (double).
+        /// </summary>
         public static BigDouble Pow(BigDouble value, double power)
         {
             // TODO: power can be greater that long.MaxValue, which can bring troubles in fast track
@@ -731,6 +887,9 @@ namespace FundamentalLib.Core
             return result;
         }
 
+        /// <summary>
+        /// Вычисляет факториал (приближение Стирлинга).
+        /// </summary>
         public static BigDouble Factorial(BigDouble value)
         {
             //Using Stirling's Approximation. https://en.wikipedia.org/wiki/Stirling%27s_approximation#Versions_suitable_for_calculators
@@ -740,11 +899,17 @@ namespace FundamentalLib.Core
             return Pow(n / 2.71828182845904523536 * Math.Sqrt(n * Math.Sinh(1 / n) + 1 / (810 * Math.Pow(n, 6))), n) * Math.Sqrt(2 * 3.141592653589793238462 / n);
         }
 
+        /// <summary>
+        /// Возвращает e в указанной степени (экспонента).
+        /// </summary>
         public static BigDouble Exp(BigDouble value)
         {
             return Pow(2.71828182845904523536, value);
         }
 
+        /// <summary>
+        /// Возвращает квадратный корень.
+        /// </summary>
         public static BigDouble Sqrt(BigDouble value)
         {
             if (value.Mantissa < 0)
@@ -761,6 +926,9 @@ namespace FundamentalLib.Core
             return Normalize(Math.Sqrt(value.Mantissa), (long) Math.Floor(value.Exponent / 2.0));
         }
 
+        /// <summary>
+        /// Возвращает кубический корень.
+        /// </summary>
         public static BigDouble Cbrt(BigDouble value)
         {
             var sign = 1;
@@ -787,31 +955,49 @@ namespace FundamentalLib.Core
             return Normalize(newmantissa, (long) Math.Floor(value.Exponent / 3.0));
         }
 
+        /// <summary>
+        /// Гиперболический синус (sinh).
+        /// </summary>
         public static BigDouble Sinh(BigDouble value)
         {
             return (Exp(value) - Exp(-value)) / 2;
         }
 
+        /// <summary>
+        /// Гиперболический косинус (cosh).
+        /// </summary>
         public static BigDouble Cosh(BigDouble value)
         {
             return (Exp(value) + Exp(-value)) / 2;
         }
 
+        /// <summary>
+        /// Гиперболический тангенс (tanh).
+        /// </summary>
         public static BigDouble Tanh(BigDouble value)
         {
             return Sinh(value) / Cosh(value);
         }
 
+        /// <summary>
+        /// Обратный гиперболический синус (asinh).
+        /// </summary>
         public static double Asinh(BigDouble value)
         {
             return Ln(value + Sqrt(Pow(value, 2) + 1));
         }
 
+        /// <summary>
+        /// Обратный гиперболический косинус (acosh).
+        /// </summary>
         public static double Acosh(BigDouble value)
         {
             return Ln(value + Sqrt(Pow(value, 2) - 1));
         }
 
+        /// <summary>
+        /// Обратный гиперболический тангенс (atanh).
+        /// </summary>
         public static double Atanh(BigDouble value)
         {
             if (Abs(value) >= 1) return double.NaN;
@@ -1010,10 +1196,9 @@ namespace FundamentalLib.Core
         private static readonly Random Random = new Random();
 
         /// <summary>
-        /// This doesn't follow any kind of sane random distribution, so use this for testing purposes only.
-        /// <para>5% of the time, mantissa is 0.</para>
-        /// <para>10% of the time, mantissa is round.</para>
+        /// Генерирует случайное BigDouble для тестовых целей (5% шанс нуля, 10% шанс округлённой мантиссы).
         /// </summary>
+        /// <param name="absMaxExponent">Максимальный модуль экспоненты</param>
         public static BigDouble RandomBigDouble(double absMaxExponent)
         {
             if (Random.NextDouble() * 20 < 1)
@@ -1033,11 +1218,9 @@ namespace FundamentalLib.Core
         }
 
         /// <summary>
-        /// If you're willing to spend 'resourcesAvailable' and want to buy something with
-        /// exponentially increasing cost each purchase (start at priceStart, multiply by priceRatio,
-        /// already own currentOwned), how much of it can you buy?
+        /// Вычисляет, сколько предметов можно купить при геометрической прогрессии цен.
         /// <para>
-        /// Adapted from Trimps source code.
+        /// Начальная цена: priceStart, множитель: priceRatio, уже куплено: currentOwned.
         /// </para>
         /// </summary>
         public static BigDouble AffordGeometricSeries(BigDouble resourcesAvailable, BigDouble priceStart,
@@ -1051,8 +1234,7 @@ namespace FundamentalLib.Core
         }
 
         /// <summary>
-        /// How much resource would it cost to buy (numItems) items if you already have currentOwned,
-        /// the initial price is priceStart and it multiplies by priceRatio each purchase?
+        /// Вычисляет общую стоимость покупки N предметов при геометрической прогрессии цен.
         /// </summary>
         public static BigDouble SumGeometricSeries(BigDouble numItems, BigDouble priceStart, BigDouble priceRatio,
             BigDouble currentOwned)
@@ -1063,9 +1245,10 @@ namespace FundamentalLib.Core
         }
 
         /// <summary>
-        /// If you're willing to spend 'resourcesAvailable' and want to buy something with
-        /// additively increasing cost each purchase (start at priceStart, add by priceAdd,
-        /// already own currentOwned), how much of it can you buy?
+        /// Вычисляет, сколько предметов можно купить при арифметической прогрессии цен.
+        /// <para>
+        /// Начальная цена: priceStart, прирост: priceAdd, уже куплено: currentOwned.
+        /// </para>
         /// </summary>
         public static BigDouble AffordArithmeticSeries(BigDouble resourcesAvailable, BigDouble priceStart,
             BigDouble priceAdd, BigDouble currentOwned)
@@ -1085,11 +1268,7 @@ namespace FundamentalLib.Core
         }
 
         /// <summary>
-        /// How much resource would it cost to buy (numItems) items if you already have currentOwned,
-        /// the initial price is priceStart and it adds priceAdd each purchase?
-        /// <para>
-        /// Adapted from http://www.mathwords.com/a/arithmetic_series.htm
-        /// </para>
+        /// Вычисляет общую стоимость покупки N предметов при арифметической прогрессии цен.
         /// </summary>
         public static BigDouble SumArithmeticSeries(BigDouble numItems, BigDouble priceStart, BigDouble priceAdd,
             BigDouble currentOwned)
@@ -1102,10 +1281,9 @@ namespace FundamentalLib.Core
         }
 
         /// <summary>
-        /// When comparing two purchases that cost (resource) and increase your resource/sec by (delta_RpS),
-        /// the lowest efficiency score is the better one to purchase.
+        /// Вычисляет эффективность покупки: отношение стоимости к приросту ресурса в секунду.
         /// <para>
-        /// From Frozen Cookies: http://cookieclicker.wikia.com/wiki/Frozen_Cookies_(JavaScript_Add-on)#Efficiency.3F_What.27s_that.3F
+        /// Меньший показатель — лучше.
         /// </para>
         /// </summary>
         public static BigDouble EfficiencyOfPurchase(BigDouble cost, BigDouble currentRpS, BigDouble deltaRpS)
@@ -1114,173 +1292,210 @@ namespace FundamentalLib.Core
         }
     }
 
+    /// <summary>
+    /// Методы-расширения для удобного вызова операций BigDouble.
+    /// </summary>
     public static class BigDoubleExtensions
     {
+        /// <summary>Возвращает абсолютное значение (модуль)</summary>
         public static BigDouble Abs(this BigDouble value)
         {
             return BigDouble.Abs(value);
         }
 
+        /// <summary>Меняет знак числа на противоположный</summary>
         public static BigDouble Negate(this BigDouble value)
         {
             return BigDouble.Negate(value);
         }
 
+        /// <summary>Возвращает знак числа: -1, 0 или 1</summary>
         public static int Sign(this BigDouble value)
         {
             return BigDouble.Sign(value);
         }
 
+        /// <summary>Округляет до ближайшего целого</summary>
         public static BigDouble Round(this BigDouble value)
         {
             return BigDouble.Round(value);
         }
 
+        /// <summary>Округляет вниз</summary>
         public static BigDouble Floor(this BigDouble value)
         {
             return BigDouble.Floor(value);
         }
 
+        /// <summary>Округляет вверх</summary>
         public static BigDouble Ceiling(this BigDouble value)
         {
             return BigDouble.Ceiling(value);
         }
 
+        /// <summary>Отбрасывает дробную часть</summary>
         public static BigDouble Truncate(this BigDouble value)
         {
             return BigDouble.Truncate(value);
         }
 
+        /// <summary>Складывает два числа</summary>
         public static BigDouble Add(this BigDouble value, BigDouble other)
         {
             return BigDouble.Add(value, other);
         }
 
+        /// <summary>Вычитает одно число из другого</summary>
         public static BigDouble Subtract(this BigDouble value, BigDouble other)
         {
             return BigDouble.Subtract(value, other);
         }
 
+        /// <summary>Умножает два числа</summary>
         public static BigDouble Multiply(this BigDouble value, BigDouble other)
         {
             return BigDouble.Multiply(value, other);
         }
 
+        /// <summary>Делит одно число на другое</summary>
         public static BigDouble Divide(this BigDouble value, BigDouble other)
         {
             return BigDouble.Divide(value, other);
         }
 
+        /// <summary>Возвращает обратное значение (1/value)</summary>
         public static BigDouble Reciprocate(this BigDouble value)
         {
             return BigDouble.Reciprocate(value);
         }
 
+        /// <summary>Возвращает большее из двух значений</summary>
         public static BigDouble Max(this BigDouble value, BigDouble other)
         {
             return BigDouble.Max(value, other);
         }
 
+        /// <summary>Возвращает меньшее из двух значений</summary>
         public static BigDouble Min(this BigDouble value, BigDouble other)
         {
             return BigDouble.Min(value, other);
         }
 
+        /// <summary>Возвращает абсолютный логарифм по основанию 10</summary>
         public static double AbsLog10(this BigDouble value)
         {
             return BigDouble.AbsLog10(value);
         }
 
+        /// <summary>Возвращает логарифм по основанию 10</summary>
         public static double Log10(this BigDouble value)
         {
             return BigDouble.Log10(value);
         }
 
+        /// <summary>Возвращает логарифм по основанию BigDouble</summary>
         public static double Log(BigDouble value, BigDouble @base)
         {
             return BigDouble.Log(value, @base);
         }
 
+        /// <summary>Возвращает логарифм по основанию double</summary>
         public static double Log(this BigDouble value, double @base)
         {
             return BigDouble.Log(value, @base);
         }
 
+        /// <summary>Возвращает логарифм по основанию 2</summary>
         public static double Log2(this BigDouble value)
         {
             return BigDouble.Log2(value);
         }
 
+        /// <summary>Возвращает натуральный логарифм (по основанию e)</summary>
         public static double Ln(this BigDouble value)
         {
             return BigDouble.Ln(value);
         }
 
+        /// <summary>Возвращает e в указанной степени</summary>
         public static BigDouble Exp(this BigDouble value)
         {
             return BigDouble.Exp(value);
         }
 
+        /// <summary>Гиперболический синус (sinh)</summary>
         public static BigDouble Sinh(this BigDouble value)
         {
             return BigDouble.Sinh(value);
         }
 
+        /// <summary>Гиперболический косинус (cosh)</summary>
         public static BigDouble Cosh(this BigDouble value)
         {
             return BigDouble.Cosh(value);
         }
 
+        /// <summary>Гиперболический тангенс (tanh)</summary>
         public static BigDouble Tanh(this BigDouble value)
         {
             return BigDouble.Tanh(value);
         }
 
+        /// <summary>Обратный гиперболический синус (asinh)</summary>
         public static double Asinh(this BigDouble value)
         {
             return BigDouble.Asinh(value);
         }
 
+        /// <summary>Обратный гиперболический косинус (acosh)</summary>
         public static double Acosh(this BigDouble value)
         {
             return BigDouble.Acosh(value);
         }
 
+        /// <summary>Обратный гиперболический тангенс (atanh)</summary>
         public static double Atanh(this BigDouble value)
         {
             return BigDouble.Atanh(value);
         }
 
+        /// <summary>Возводит в степень BigDouble</summary>
         public static BigDouble Pow(this BigDouble value, BigDouble power)
         {
             return BigDouble.Pow(value, power);
         }
 
+        /// <summary>Возводит в целую степень</summary>
         public static BigDouble Pow(this BigDouble value, long power)
         {
             return BigDouble.Pow(value, power);
         }
 
+        /// <summary>Возводит в степень double</summary>
         public static BigDouble Pow(this BigDouble value, double power)
         {
             return BigDouble.Pow(value, power);
         }
 
+        /// <summary>Вычисляет факториал</summary>
         public static BigDouble Factorial(this BigDouble value)
         {
             return BigDouble.Factorial(value);
         }
 
+        /// <summary>Возвращает квадратный корень</summary>
         public static BigDouble Sqrt(this BigDouble value)
         {
             return BigDouble.Sqrt(value);
         }
 
+        /// <summary>Возвращает кубический корень</summary>
         public static BigDouble Cbrt(this BigDouble value)
         {
             return BigDouble.Cbrt(value);
         }
 
+        /// <summary>Возвращает квадрат числа (value²)</summary>
         public static BigDouble Sqr(this BigDouble value)
         {
             return BigDouble.Pow(value, 2);

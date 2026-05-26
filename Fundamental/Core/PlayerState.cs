@@ -1,6 +1,8 @@
 using FundamentalLib.Classes;
 using FundamentalLib.Core;
 using Fundamental.ViewModels;
+using Fundamental.ViewModels.Base;
+using System.Dynamic;
 
 namespace Fundamental.Core
 {
@@ -22,7 +24,7 @@ namespace Fundamental.Core
         public Dictionary<int, Dictionary<int, UpgradeViewModel>> Upgrades { get; } = [];
 
         /// <summary>Строения по стадиям: Stage -> [ID -> Structure]</summary>
-        public Dictionary<int, Dictionary<int, Structure>> Buildings { get; } = [];
+        public Dictionary<int, Dictionary<int, StructureViewModel>> Buildings { get; } = [];
 
         #endregion
 
