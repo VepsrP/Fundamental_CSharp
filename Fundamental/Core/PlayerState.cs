@@ -9,6 +9,10 @@ namespace Fundamental.Core
     /// </summary>
     public class PlayerState
     {
+        public PlayerState()
+        {
+            Vacuum = new VacuumSettings();
+        }
         #region Resources
 
         /// <summary>Ресурсы игрока</summary>
@@ -31,7 +35,7 @@ namespace Fundamental.Core
         /// <summary>Текущая активная стадия</summary>
         public int ActiveStage { get; set; } = 1;
 
-        public IVacuumSettings Vacuum { get; } = new VacuumSettings();
+        public IVacuumSettings Vacuum { get; }
 
         /// <summary>Активная вкладка</summary>
         public int MainTab { get; set; }

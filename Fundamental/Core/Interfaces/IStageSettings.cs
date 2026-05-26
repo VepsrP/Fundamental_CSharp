@@ -9,11 +9,11 @@ namespace Fundamental.Interfaces
         string ButtonBorder { get; }
         string ImageBorderColor { get; }
         Func<PlayerState, int> MinBuilding { get; }
-        Func<int> MaxBuilding { get; }
-        Func<int> MinUpgrade { get; }
+        Func<PlayerState, int> MaxBuilding { get; }
+        Func<PlayerState, int> MinUpgrade { get; }
         Func<PlayerState, int> MaxUpgrade { get; }
-        Func<int> MinResearch { get; }
-        Func<int> MaxResearch { get; }
+        Func<PlayerState, int> MinResearch { get; }
+        Func<PlayerState, int> MaxResearch { get; }
         Func<PlayerState, int> MinResearchExtra { get; }
         Func<PlayerState, int> MaxResearchExtra { get; }
         Func<BigDouble> StageRequirement { get; }
