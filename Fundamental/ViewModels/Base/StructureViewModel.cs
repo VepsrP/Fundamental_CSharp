@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Fundamental.Core;
-using FundamentalLib.Core;
-using FundamentalLib.Interfaces;
+using Fundamental.Interfaces;
 
 namespace Fundamental.ViewModels.Base;
 
@@ -154,7 +153,7 @@ public abstract partial class StructureViewModel : EntityViewModel, IResourceTar
         #endregion
 
     [RelayCommand]
-    public void ResetAmount()
+    public virtual void ResetAmount()
     {
         Amount = BigDouble.Zero;
         TrueAmount = 0;

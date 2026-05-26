@@ -1,7 +1,6 @@
-using FundamentalLib.Classes;
-using FundamentalLib.Core;
+using Fundamental.Core;
 
-namespace FundamentalLib.Interfaces
+namespace Fundamental.Interfaces
 {
     public interface IEnergy : IResource
     {

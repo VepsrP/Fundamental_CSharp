@@ -1,8 +1,6 @@
-using FundamentalLib.Classes;
-using FundamentalLib.Core;
 using Fundamental.ViewModels;
 using Fundamental.ViewModels.Base;
-using System.Dynamic;
+using Fundamental.Interfaces;
 
 namespace Fundamental.Core
 {
@@ -32,6 +30,8 @@ namespace Fundamental.Core
 
         /// <summary>Текущая активная стадия</summary>
         public int ActiveStage { get; set; } = 1;
+
+        public IVacuumSettings Vacuum { get; } = new VacuumSettings();
 
         /// <summary>Активная вкладка</summary>
         public int MainTab { get; set; }

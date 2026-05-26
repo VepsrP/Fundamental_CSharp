@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FundamentalLib.Core;
-using FundamentalLib.Interfaces;
+using Fundamental.Core;
+using Fundamental.Interfaces;
 
 namespace Fundamental.ViewModels
 {

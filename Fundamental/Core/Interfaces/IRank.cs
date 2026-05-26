@@ -1,4 +1,4 @@
-﻿namespace FundamentalLib.Interfaces
+﻿namespace Fundamental.Interfaces
 {
     public interface IRank
     {

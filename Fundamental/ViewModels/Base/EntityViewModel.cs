@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using FundamentalLib.Core;
+using Fundamental.Core;
 
 namespace Fundamental.ViewModels.Base
 {

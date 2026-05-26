@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using Fundamental.Core;
-using FundamentalLib.Classes;
 
 namespace Fundamental.ViewModels
 {
