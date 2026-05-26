@@ -1,5 +1,4 @@
 <Solution>
   <Project Path="Fundamental/Fundamental.csproj" />
-  <Project Path="FundamentalLib/FundamentalLib.csproj" Id="1f03ee92-8de2-4e75-9beb-03f830c57b2a" />
   <Project Path="ImageLibrary/ImageLibrary.csproj" Id="0fa63a87-c4ae-4bbe-8d6f-904ef8f979dc" />
 </Solution>
