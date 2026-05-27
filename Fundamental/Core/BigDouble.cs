@@ -1519,4 +1519,54 @@ namespace Fundamental.Core
         }
 #endif
     }
+
+    public static class NumberFormatter
+    {
+        public static string Format(int value) => FormatDouble(value);
+
+        public static string Format(double value) => FormatDouble(value);
+
+        public static string Format(BigDouble value)
+        {
+            if (value.Exponent <= 5)
+                return FormatDouble(value.Mantissa * Math.Pow(10, value.Exponent));
+
+            return FormatBigDoubleExp(value);
+        }
+
+        private static string FormatDouble(double v)
+        {
+            if (double.IsInfinity(v) || double.IsNaN(v))
+                return v.ToString(CultureInfo.InvariantCulture);
+
+            var abs = Math.Abs(v);
+
+            if (abs >= 1_000_000)
+            {
+                var exp = Math.Floor(Math.Log10(abs));
+                var mantissa = v / Math.Pow(10, exp);
+                return $"{mantissa.ToString("F3", CultureInfo.InvariantCulture)}e{(long)exp}";
+            }
+
+            var decimals = abs switch
+            {
+                >= 100_000 => 5,
+                >= 10_000 => 4,
+                >= 1_000 => 3,
+                >= 100 => 2,
+                >= 10 => 1,
+                _ => 5
+            };
+
+            return v.ToString($"F{decimals}", CultureInfo.InvariantCulture);
+        }
+
+        private static string FormatBigDoubleExp(BigDouble v)
+        {
+            var mantissa = v.Mantissa;
+            var exp = v.Exponent;
+            return $"{mantissa.ToString("F3", CultureInfo.InvariantCulture)}e{exp}";
+        }
+    }
+
 }

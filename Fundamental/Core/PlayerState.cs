@@ -1,6 +1,7 @@
 using Fundamental.ViewModels;
 using Fundamental.ViewModels.Base;
 using Fundamental.Interfaces;
+using System.Collections.ObjectModel;
 
 namespace Fundamental.Core
 {
@@ -39,6 +40,11 @@ namespace Fundamental.Core
 
         /// <summary>Активная вкладка</summary>
         public int MainTab { get; set; }
+
+        public Collection<Event> Events {get;} = [
+            new Event("", _ => false),
+            new Event("A new reset tier has been unlocked. It will allow the creation of higher tier Structures, but for the price of everything else", ps => ps.Upgrades[1][10].Bought),
+        ];
 
         #endregion
 

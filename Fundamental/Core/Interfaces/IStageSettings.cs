@@ -19,5 +19,6 @@ namespace Fundamental.Interfaces
         Func<BigDouble> StageRequirement { get; }
         string UpgradeImagePrefix { get; }
         string ResearchImagePrefix { get; }
+        Func<PlayerState, int>? MaxRank { get; }
     }
 }

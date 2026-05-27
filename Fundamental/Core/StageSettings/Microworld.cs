@@ -1,8 +1,8 @@
 using Fundamental.Interfaces;
 
-namespace Fundamental.Core;
+namespace Fundamental.Core.StageSettings;
 
-public class MicroworldStageSettings : IStageSettings
+public class Microworld : IStageSettings
 {
     public string Name => "Microworld";
     public string TextColor => "CyanTextColor";
@@ -21,4 +21,6 @@ public class MicroworldStageSettings : IStageSettings
 
     public string UpgradeImagePrefix => "UpgradeQ";
     public string ResearchImagePrefix => "ResearchQ";
+
+    public Func<PlayerState, int>? MaxRank => null;
 }

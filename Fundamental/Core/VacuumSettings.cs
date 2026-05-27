@@ -1,3 +1,4 @@
+using Fundamental.Core.StageSettings;
 using Fundamental.Interfaces;
 
 namespace Fundamental.Core;
@@ -10,7 +11,7 @@ public class VacuumSettings : IVacuumSettings
 
     public VacuumSettings()
     {
-        IStageSettings microworldStageSettings = new MicroworldStageSettings();
+        IStageSettings microworldStageSettings = new Microworld();
         _stageInfo["Microworld"] = microworldStageSettings;
     }
     public bool State
