@@ -10,7 +10,7 @@ public class Interstellar : IStageSettings
     public string ImageBorderColor => "Stage4BorderImage";
 
     public Func<PlayerState, int> MinBuilding => _ => 1;
-    public Func<PlayerState, int> MaxBuilding => ps => ps.Vacuum.State ? 5 : 4;
+    public Func<PlayerState, int> MaxBuilding => ps => ps.Vacuum.True ? 5 : 4;
     public Func<PlayerState, int> MinUpgrade => _ => 1;
     public Func<PlayerState, int> MaxUpgrade => _ => 6;
     public Func<PlayerState, int> MinResearch => _ => 1;

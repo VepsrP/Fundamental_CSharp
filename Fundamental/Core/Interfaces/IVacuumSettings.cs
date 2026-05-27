@@ -2,7 +2,7 @@ namespace Fundamental.Interfaces
 {
     public interface IVacuumSettings
     {
-        bool State { get; set; }
+        bool True { get; set; }
         Dictionary<string, IStageSettings> StageInfo { get; }
     }
 }

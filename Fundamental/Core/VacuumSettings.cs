@@ -5,7 +5,7 @@ namespace Fundamental.Core;
 
 public class VacuumSettings : IVacuumSettings
 {
-    private bool _state = false;
+    private bool _true = false;
 
     private Dictionary<string, IStageSettings> _stageInfo = [];
 
@@ -14,10 +14,10 @@ public class VacuumSettings : IVacuumSettings
         IStageSettings microworldStageSettings = new Microworld();
         _stageInfo["Microworld"] = microworldStageSettings;
     }
-    public bool State
+    public bool True
     {
-        get => _state;
-        set { _state = value;}
+        get => _true;
+        set { _true = value;}
     }
 
     public Dictionary<string, IStageSettings> StageInfo => _stageInfo;

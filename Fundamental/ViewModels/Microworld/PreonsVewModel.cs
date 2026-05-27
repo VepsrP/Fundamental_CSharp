@@ -2,7 +2,7 @@ using Fundamental.Interfaces;
 using Fundamental.Core;
 using Fundamental.ViewModels.Base;
 
-namespace Fundamental.ViewModels;
+namespace Fundamental.ViewModels.Microworld;
 /// <summary>
 /// Класс для структуры Preons.
 /// </summary>

@@ -91,7 +91,7 @@ public abstract partial class StructureViewModel : EntityViewModel, IResourceTar
     [RelayCommand]
     public virtual void Produce()
     {
-        Target.Increase(Producing.Multiply(GlobalBase.Multiplier));
+        Target.Increase(Producing.Multiply(GlobalBase.IntervalScore));
     }
 
     public override void Increase(BigDouble value)
@@ -158,7 +158,6 @@ public abstract partial class StructureViewModel : EntityViewModel, IResourceTar
         Amount = BigDouble.Zero;
         TrueAmount = 0;
         TotalAmount = BigDouble.Zero;
-        CalculateProducing();
         True = false;
     }
 
